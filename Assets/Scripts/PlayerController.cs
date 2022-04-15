@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public static PlayerController Instance;
     public delegate void JoystickInteractionHandler(PlayerController player);
     public static event JoystickInteractionHandler PlayerControllerChanged;

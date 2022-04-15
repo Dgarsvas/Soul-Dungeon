@@ -15,6 +15,14 @@ public abstract class BaseEntity : MonoBehaviour
     protected NavMeshAgent navMeshAgent;
     protected StateMachine stateMachine;
 
+    public bool isPlayer;
+
+
+    public virtual void Start()
+    {
+        EntityManager.Instance.AddEntity(this);
+    }
+
     public abstract void TakeDamage(float damage, Vector3 direction);
 
     public abstract void Despawn();

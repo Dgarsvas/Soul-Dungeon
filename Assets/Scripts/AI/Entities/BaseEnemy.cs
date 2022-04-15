@@ -18,7 +18,7 @@ public class BaseEnemy : BaseEntity
 
     private float distanceToPlayer;
 
-    private void Start()
+    public override void Start()
     {
         stateMachine = new StateMachine();
 
@@ -31,11 +31,12 @@ public class BaseEnemy : BaseEntity
         stateMachine.AddTransition(retreat, chase, () => { return distanceToPlayer > stopRetreatDistance; });
 
         stateMachine.SetState(chase);
+        base.Start();
     }
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && !isPlayer)
         {
             distanceToPlayer = (transform.position - PlayerController.Instance.transform.position).magnitude;
             stateMachine?.Tick();
