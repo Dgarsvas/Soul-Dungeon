@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 0
+  hasAttacked: 0
   reloadTime: 1
 --- !u!114 &10247173
 MonoBehaviour:
@@ -198,7 +199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 0
-  reloadTime: 1
+  hasAttacked: 0
+  reloadTime: 3
   projectilePrefab: {fileID: 7661931154034135387, guid: e0a77566bab0035479c17ff77e834739, type: 3}
 --- !u!1 &8660044220540064611
 GameObject:

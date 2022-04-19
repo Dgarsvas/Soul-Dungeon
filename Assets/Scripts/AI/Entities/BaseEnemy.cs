@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
 public class BaseEnemy : BaseEntity
 {
     [SerializeField]
@@ -26,8 +25,8 @@ public class BaseEnemy : BaseEntity
         AttackState attack = new AttackState(attackController, navMeshAgent);
         RetreatState retreat = new RetreatState(navMeshAgent);
         stateMachine.AddTransition(chase, attack, () => { return distanceToPlayer < attackDistance; });
-        stateMachine.AddTransition(attack, retreat, () => { return distanceToPlayer < retreatDistance; });
-        stateMachine.AddTransition(attack, chase, () => { return distanceToPlayer > attackDistance; });
+        stateMachine.AddTransition(attack, retreat, () => { return distanceToPlayer < retreatDistance && attackController.hasAttacked; });
+        stateMachine.AddTransition(attack, chase, () => { return distanceToPlayer > attackDistance && attackController.hasAttacked; });
         stateMachine.AddTransition(retreat, chase, () => { return distanceToPlayer > stopRetreatDistance; });
 
         stateMachine.SetState(chase);

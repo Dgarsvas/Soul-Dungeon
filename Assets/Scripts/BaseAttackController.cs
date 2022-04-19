@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class BaseAttackController : MonoBehaviour
 {
     public bool canAttack;
+    public bool hasAttacked;
 
     [SerializeField]
     protected float reloadTime;
@@ -18,6 +19,7 @@ public abstract class BaseAttackController : MonoBehaviour
             if (timer < 0)
             {
                 Attack();
+                hasAttacked = true;
                 timer = reloadTime;
             }
         }
