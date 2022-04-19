@@ -3104,10 +3104,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2937864066807069491, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2937864066807069493, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -3244,43 +3240,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
---- !u!1 &7278509053605809902 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7278509053718587236, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
-  m_PrefabInstance: {fileID: 7278509053605809901}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7278509053605809903 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7278509053718587261, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
-  m_PrefabInstance: {fileID: 7278509053605809901}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7278509053605809902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71167d90b514dd848b676a7958e6e63d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!195 &7278509053605809904 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 7278509053718587234, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
-  m_PrefabInstance: {fileID: 7278509053605809901}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7278509053605809905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7278509053605809902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eca27037a6cb0447bef9697f1e92104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  navMeshAgent: {fileID: 7278509053605809904}
-  isPlayer: 1
-  attackController: {fileID: 7278509053605809903}
-  attackDistance: 1
-  retreatDistance: 1
-  stopRetreatDistance: 1

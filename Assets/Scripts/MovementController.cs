@@ -19,6 +19,8 @@ public class MovementController : MonoBehaviour
 
     private void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
+        speedModifier = agent.speed;
         Joystick.JoystickDown += JoystickDown;
         Joystick.JoystickUp += JoystickUp;
         agent.updateRotation = false;

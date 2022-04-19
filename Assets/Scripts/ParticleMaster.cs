@@ -4,7 +4,11 @@ using UnityEngine;
 
 public enum ParticleType
 {
-    SimpleHit
+    SimpleHit,
+    DarkAura,
+    YellowAura,
+    PurpleAura,
+    MagicExplosion
 }
 
 public class ParticleMaster : MonoBehaviour
@@ -36,7 +40,7 @@ public class ParticleMaster : MonoBehaviour
 
     public void SpawnParticles(Vector3 position, ParticleType type)
     {
-        GameObject spawned = Instantiate(Instance.particlePrefabs[(int)type], position, Quaternion.identity);
+        GameObject spawned = Instantiate(Instance.particlePrefabs[(int)type], position, Instance.particlePrefabs[(int)type].transform.rotation);
         StartCoroutine(DestroyAfter(spawned, spawned.GetComponent<ParticleSystem>().main.duration));
     }
 

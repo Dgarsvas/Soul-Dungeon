@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 7278509053718587235}
   - component: {fileID: 7278509053718587261}
   - component: {fileID: 10247173}
+  - component: {fileID: 7278509053605809905}
+  - component: {fileID: 8893893774005009571}
   m_Layer: 0
   m_Name: Player
   m_TagString: Entity
@@ -163,6 +165,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52941aa51afdf6e42a62da175c440677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackController: {fileID: 8893893774005009571}
+--- !u!114 &7278509053605809905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278509053718587236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eca27037a6cb0447bef9697f1e92104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  navMeshAgent: {fileID: 7278509053718587234}
+  isPlayer: 1
+  attackController: {fileID: 8893893774005009571}
+  attackDistance: 3
+  retreatDistance: 1.5
+  stopRetreatDistance: 5
+--- !u!114 &8893893774005009571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278509053718587236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c303f48b88ce3b499b6d5c2fc79082f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAttack: 0
+  reloadTime: 1
+  projectilePrefab: {fileID: 7661931154034135387, guid: e0a77566bab0035479c17ff77e834739, type: 3}
 --- !u!1 &8660044220540064611
 GameObject:
   m_ObjectHideFlags: 0

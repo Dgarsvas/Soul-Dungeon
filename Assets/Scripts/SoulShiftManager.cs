@@ -23,6 +23,8 @@ public class SoulShiftManager : MonoBehaviour
     private CinemachineVirtualCamera playerCam;
     [SerializeField]
     private GameObject choiceRing;
+    [SerializeField]
+    private ParticleSystem choiceParticles;
 
     private const float FLOOR_Y = -0.5f;
 
@@ -31,6 +33,8 @@ public class SoulShiftManager : MonoBehaviour
 
     private Coroutine shiftCoroutine;
     private BaseEntity chosenEntity;
+    private BaseEntity curPlayerEntity;
+
 
     private List<BaseEntity> availableEntities;
     private int index;
@@ -39,7 +43,7 @@ public class SoulShiftManager : MonoBehaviour
     {
         if (shiftWasStarted)
         {
-            choiceRing.SetActive(false);
+            choiceParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             StopCoroutine(shiftCoroutine);
             ActivateShiftControls(false);
             StartCoroutine(SlowDownTime(false));
@@ -50,6 +54,7 @@ public class SoulShiftManager : MonoBehaviour
         }
         EntityManager.Instance.GetAvailableEntities(out availableEntities, out index);
         chosenEntity = availableEntities[index];
+        curPlayerEntity = chosenEntity;
         MoveSelectionRingToEntity(chosenEntity);
         shiftWasStarted = true;
         hasChosen = false;
@@ -64,18 +69,34 @@ public class SoulShiftManager : MonoBehaviour
         ActivateShiftControls(true);
         yield return new WaitUntil(() => { return hasChosen; });
         ActivateShiftControls(false);
-        yield return ShiftSoulToChosenEntity();
+        ShiftSoulToChosenEntity();
         yield return SlowDownTime(false);
-
         joystick.SetActive(true);
         shiftWasStarted = false;
         hasChosen = false;
-        choiceRing.SetActive(false);
+        curPlayerEntity = null;
+        choiceParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
 
-    private IEnumerator ShiftSoulToChosenEntity()
+    private void ShiftSoulToChosenEntity()
     {
-        yield return null;
+        if (curPlayerEntity != chosenEntity)
+        {
+            MovementController movement = chosenEntity.gameObject.AddComponent<MovementController>();
+            PlayerController player = chosenEntity.gameObject.AddComponent<PlayerController>();
+            player.attackController = chosenEntity.gameObject.GetComponent<BaseAttackController>();
+            MakePreviousPlayerEnitityIntoEnemy(curPlayerEntity);
+        }
+    }
+
+    private void MakePreviousPlayerEnitityIntoEnemy(BaseEntity curPlayerEntity)
+    {
+        ParticleMaster.Instance.SpawnParticles(new Vector3(curPlayerEntity.transform.position.x, 0f, curPlayerEntity.transform.position.z), ParticleType.MagicExplosion);
+        Destroy(curPlayerEntity.gameObject.GetComponent<MovementController>());
+        Destroy(curPlayerEntity.gameObject.GetComponent<PlayerAttackController>());
+        Destroy(curPlayerEntity.gameObject.GetComponent<PlayerController>());
+
+        curPlayerEntity.gameObject.GetComponent<BaseEnemy>().isPlayer = false;
     }
 
     private void ActivateShiftControls(bool state)
@@ -108,7 +129,7 @@ public class SoulShiftManager : MonoBehaviour
     }
     private void MoveSelectionRingToEntity(BaseEntity chosenEntity)
     {
-        choiceRing.SetActive(true);
+        choiceParticles.Play(true);
         choiceRing.transform.position = new Vector3(chosenEntity.transform.position.x, FLOOR_Y, chosenEntity.transform.position.z);
     }
 

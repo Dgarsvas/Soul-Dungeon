@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
     public delegate void JoystickInteractionHandler(PlayerController player);
     public static event JoystickInteractionHandler PlayerControllerChanged;
+    public BaseAttackController attackController;
 
     void Awake()
     {
@@ -18,5 +19,23 @@ public class PlayerController : MonoBehaviour
         }
 
         Instance = this;
+        Joystick.JoystickDown += JoystickDown;
+        Joystick.JoystickUp += JoystickUp;
+    }
+
+    private void OnDestroy()
+    {
+        Joystick.JoystickDown -= JoystickDown;
+        Joystick.JoystickUp -= JoystickUp;
+    }
+
+    private void JoystickUp()
+    {
+        attackController.canAttack = true;
+    }
+
+    private void JoystickDown()
+    {
+        attackController.canAttack = false;
     }
 }

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C4A8D96C-F82D-57C9-FC5C-0283A028D2F4}</ProjectGuid>
+    <ProjectGuid>{92AD4BEA-C4A7-908B-610C-ECF86F3DB883}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,40 +56,41 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
-    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Base\Joystick.cs" />
-    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
-    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
-    <Compile Include="Assets\Scripts\MovementController.cs" />
-    <Compile Include="Assets\Scripts\PlayerAttackController.cs" />
-    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
-    <Compile Include="Assets\Scripts\AI\States\IdleState.cs" />
-    <Compile Include="Assets\Scripts\AI\Entities\BaseEnemy.cs" />
-    <Compile Include="Assets\Scripts\AI\GlobalAISettings.cs" />
-    <Compile Include="Assets\Scripts\AI\AIUtils.cs" />
-    <Compile Include="Assets\Scripts\AI\Entities\BaseEntity.cs" />
-    <Compile Include="Assets\Scripts\AI\IState.cs" />
-    <Compile Include="Assets\Scripts\AI\StateMachine.cs" />
-    <Compile Include="Assets\Scripts\AI\States\AttackState.cs" />
-    <Compile Include="Assets\Scripts\AI\States\ChaseState.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\BaseAttackController.cs" />
-    <Compile Include="Assets\Scripts\AI\States\RetreatState.cs" />
-    <Compile Include="Assets\Scripts\RangedAttackController.cs" />
-    <Compile Include="Assets\Scripts\Projectiles\BaseProjectile.cs" />
     <Compile Include="Assets\Scripts\Projectiles\StraightProjectile.cs" />
-    <Compile Include="Assets\Scripts\ParticleMaster.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
+    <Compile Include="Assets\Scripts\AI\Entities\BaseEnemy.cs" />
+    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\Scripts\ParticleMaster.cs" />
+    <Compile Include="Assets\Scripts\SoulShiftManager.cs" />
+    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\Scripts\AI\IState.cs" />
+    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <Compile Include="Assets\Scripts\EntityManager.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
+    <Compile Include="Assets\Scripts\AI\States\IdleState.cs" />
+    <Compile Include="Assets\Scripts\BaseAttackController.cs" />
+    <Compile Include="Assets\Scripts\AI\Entities\BaseEntity.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets\Scripts\AI\GlobalAISettings.cs" />
+    <Compile Include="Assets\Scripts\MovementController.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\Scripts\AI\States\RetreatState.cs" />
+    <Compile Include="Assets\Scripts\PlayerAttackController.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\AI\States\ChaseState.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets\Scripts\RangedAttackController.cs" />
+    <Compile Include="Assets\Third-party plugins\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
+    <Compile Include="Assets\Scripts\Projectiles\BaseProjectile.cs" />
+    <Compile Include="Assets\Scripts\AI\AIUtils.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
+    <Compile Include="Assets\Scripts\AI\States\AttackState.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
-    <Compile Include="Assets\SoulShiftManager.cs" />
+    <Compile Include="Assets\Scripts\AI\StateMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
