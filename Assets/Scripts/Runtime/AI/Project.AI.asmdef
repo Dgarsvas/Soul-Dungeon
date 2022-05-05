@@ -1,0 +1,17 @@
+{
+    "name": "Project.AI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f0245c08d0f3ad74aa6f15dfc2dffdb5",
+        "GUID:d2298342a8f98ab49aaea50acaadb598"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

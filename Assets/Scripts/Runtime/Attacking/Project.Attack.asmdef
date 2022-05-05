@@ -1,0 +1,16 @@
+{
+    "name": "Project.Attack",
+    "rootNamespace": "",
+    "references": [
+        "GUID:67873b6ffc0e55843a243dfd820311c0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

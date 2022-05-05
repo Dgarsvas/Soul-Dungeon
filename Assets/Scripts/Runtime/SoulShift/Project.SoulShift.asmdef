@@ -1,0 +1,20 @@
+{
+    "name": "Project.SoulShift",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:767f46d24fe63634b8beaea486e7b948",
+        "GUID:d2298342a8f98ab49aaea50acaadb598",
+        "GUID:f0245c08d0f3ad74aa6f15dfc2dffdb5",
+        "GUID:67873b6ffc0e55843a243dfd820311c0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

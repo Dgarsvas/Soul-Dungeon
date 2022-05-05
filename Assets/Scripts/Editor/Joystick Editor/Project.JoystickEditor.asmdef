@@ -1,0 +1,16 @@
+{
+    "name": "Project.JoystickEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6fd4b4754a59dcd46ba845395990c822"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

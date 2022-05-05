@@ -6,6 +6,7 @@ public abstract class BaseAttackController : MonoBehaviour
 {
     public bool canAttack;
     public bool hasAttacked;
+    public Transform target;
 
     [SerializeField]
     protected float reloadTime;
@@ -15,7 +16,7 @@ public abstract class BaseAttackController : MonoBehaviour
     {
         if (canAttack)
         {
-            transform.LookAt(PlayerController.Instance.transform);
+            transform.LookAt(target);
             if (timer < 0)
             {
                 Attack();

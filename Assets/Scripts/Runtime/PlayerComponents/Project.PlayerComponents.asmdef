@@ -1,0 +1,17 @@
+{
+    "name": "Project.PlayerComponents",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f0245c08d0f3ad74aa6f15dfc2dffdb5",
+        "GUID:6fd4b4754a59dcd46ba845395990c822"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -30,7 +30,7 @@ public class EntityManager : MonoBehaviour
         entities.Remove(entity);
     }
 
-    internal void GetAvailableEntities(out List<BaseEntity> availableEntities, out int index)
+    public void GetAvailableEntities(out List<BaseEntity> availableEntities, out int index)
     {
         availableEntities = entities;
         index = availableEntities.IndexOf(PlayerController.Instance.GetComponent<BaseEntity>());
