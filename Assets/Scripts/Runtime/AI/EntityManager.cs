@@ -23,7 +23,10 @@ public class EntityManager : MonoBehaviour
         }
         Instance = this;
 
-        PlayerController_PlayerControllerChanged(PlayerController.Instance);
+        if (PlayerController.Instance != null)
+        {
+            PlayerController_PlayerControllerChanged(PlayerController.Instance);
+        }
         PlayerController.PlayerControllerChanged += PlayerController_PlayerControllerChanged;
 
         entities = new List<BaseEntity>();
@@ -43,7 +46,7 @@ public class EntityManager : MonoBehaviour
         {
             curClosestDistance = distance;
         }
-        else if(distance < curClosestDistance)
+        else if (distance < curClosestDistance)
         {
             Debug.Log($"enemy {transform.name} is closer now");
             curClosestDistance = distance;
