@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,6 +32,24 @@ public class EntityManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
+    }
+
+    float curClosestDistance = float.MaxValue;
+    Transform curClosestEnemyTransform;
+
+    public void UpdateClosestEnemy(float distance, Transform transform)
+    {
+        if (transform == curClosestEnemyTransform)
+        {
+            curClosestDistance = distance;
+        }
+        else if(distance < curClosestDistance)
+        {
+            Debug.Log($"enemy {transform.name} is closer now");
+            curClosestDistance = distance;
+            curClosestEnemyTransform = transform;
+            PlayerController.Instance.attackController.target = curClosestEnemyTransform;
+        }
     }
 
     private void PlayerController_PlayerControllerChanged(PlayerController player)

@@ -15,7 +15,7 @@ public class BaseEnemy : BaseEntity
     [SerializeField]
     private float stopRetreatDistance;
 
-    private float distanceToPlayer;
+    private float distanceToPlayer = float.MaxValue;
 
     ChaseState chase;
     AttackState attack;
@@ -45,13 +45,20 @@ public class BaseEnemy : BaseEntity
     {
         if (isActive && !isPlayer)
         {
-            distanceToPlayer = (transform.position - attackController.target.position).magnitude;
+            UpdateDistanceToPlayer();
             stateMachine?.Tick();
         }
     }
 
+    private void UpdateDistanceToPlayer()
+    {
+        distanceToPlayer = (transform.position - attackController.target.position).magnitude;
+        EntityManager.Instance.UpdateClosestEnemy(distanceToPlayer, transform);
+    }
+
     protected override void TakeDamage(float damage, Vector3 dir)
     {
+
     }
 
     protected override void Despawn()
@@ -75,5 +82,17 @@ public class BaseEnemy : BaseEntity
     protected override void TargetChanged(Transform target)
     {
         attackController.target = target;
+    }
+
+    public override float GetDistanceToPlayer()
+    {
+        if (isPlayer)
+        {
+            return float.MaxValue;
+        }
+        else
+        {
+            return distanceToPlayer;
+        }
     }
 }

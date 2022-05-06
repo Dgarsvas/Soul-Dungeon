@@ -82,7 +82,6 @@ public class SoulShiftManager : MonoBehaviour
     {
         if (curPlayerEntity != chosenEntity)
         {
-            MovementController movement = chosenEntity.gameObject.AddComponent<MovementController>();
             PlayerController player = chosenEntity.gameObject.AddComponent<PlayerController>();
             player.attackController = chosenEntity.gameObject.GetComponent<BaseAttackController>();
 
@@ -94,8 +93,6 @@ public class SoulShiftManager : MonoBehaviour
     private void MakePreviousPlayerEnitityIntoEnemy(BaseEntity curPlayerEntity)
     {
         ParticleMaster.Instance.SpawnParticles(new Vector3(curPlayerEntity.transform.position.x, 0f, curPlayerEntity.transform.position.z), ParticleType.MagicExplosion);
-        Destroy(curPlayerEntity.gameObject.GetComponent<MovementController>());
-        Destroy(curPlayerEntity.gameObject.GetComponent<PlayerAttackController>());
         Destroy(curPlayerEntity.gameObject.GetComponent<PlayerController>());
 
         curPlayerEntity.isPlayer = false;

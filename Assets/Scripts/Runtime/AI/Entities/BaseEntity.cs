@@ -40,6 +40,8 @@ public abstract class BaseEntity : MonoBehaviour
 
     protected abstract void Despawn();
 
+    public abstract float GetDistanceToPlayer();
+
     public virtual void ActivateEntity(bool state)
     {
         isActive = state;
