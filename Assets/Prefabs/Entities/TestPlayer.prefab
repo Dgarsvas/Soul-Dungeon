@@ -18,8 +18,9 @@ GameObject:
   - component: {fileID: 10247173}
   - component: {fileID: 7278509053605809905}
   - component: {fileID: 8893893774005009571}
+  - component: {fileID: 4719896266886378243}
   m_Layer: 0
-  m_Name: Player
+  m_Name: TestPlayer
   m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAttack: 0
   hasAttacked: 0
+  target: {fileID: 0}
   reloadTime: 1
 --- !u!114 &10247173
 MonoBehaviour:
@@ -179,8 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eca27037a6cb0447bef9697f1e92104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   navMeshAgent: {fileID: 7278509053718587234}
+  healthController: {fileID: 4719896266886378243}
   isPlayer: 1
   attackController: {fileID: 8893893774005009571}
   attackDistance: 3
@@ -200,8 +202,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAttack: 0
   hasAttacked: 0
+  target: {fileID: 0}
   reloadTime: 3
   projectilePrefab: {fileID: 7661931154034135387, guid: e0a77566bab0035479c17ff77e834739, type: 3}
+--- !u!114 &4719896266886378243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278509053718587236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 817f5d84d55b4c14b845a49e2673b283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8660044220540064611
 GameObject:
   m_ObjectHideFlags: 0

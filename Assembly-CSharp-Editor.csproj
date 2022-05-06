@@ -779,29 +779,29 @@
       <Project>{92AD4BEA-C4A7-908B-610C-ECF86F3DB883}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="Project.Joystick.csproj">
-      <Project>{566D529D-9A17-4558-EFCD-9EF33DFB0B8E}</Project>
-      <Name>Project.Joystick</Name>
+    <ProjectReference Include="Project.SoulShift.csproj">
+      <Project>{7C3364CD-B698-6213-E799-8117418A4674}</Project>
+      <Name>Project.SoulShift</Name>
     </ProjectReference>
     <ProjectReference Include="Project.AI.csproj">
       <Project>{F4753510-38C2-9947-51EC-4268023734C5}</Project>
       <Name>Project.AI</Name>
     </ProjectReference>
-    <ProjectReference Include="Project.Attack.csproj">
-      <Project>{17CFB336-2499-2646-0E6C-3AFECA957609}</Project>
-      <Name>Project.Attack</Name>
-    </ProjectReference>
-    <ProjectReference Include="Project.JoystickEditor.csproj">
-      <Project>{282D26C5-A81A-6C26-C3A3-5A5E0A1B76F4}</Project>
-      <Name>Project.JoystickEditor</Name>
+    <ProjectReference Include="Project.Joystick.csproj">
+      <Project>{566D529D-9A17-4558-EFCD-9EF33DFB0B8E}</Project>
+      <Name>Project.Joystick</Name>
     </ProjectReference>
     <ProjectReference Include="Project.Particles.csproj">
       <Project>{98482DEA-FA61-3020-E49A-A8C4AA4B4638}</Project>
       <Name>Project.Particles</Name>
     </ProjectReference>
-    <ProjectReference Include="Project.SoulShift.csproj">
-      <Project>{7C3364CD-B698-6213-E799-8117418A4674}</Project>
-      <Name>Project.SoulShift</Name>
+    <ProjectReference Include="Project.JoystickEditor.csproj">
+      <Project>{282D26C5-A81A-6C26-C3A3-5A5E0A1B76F4}</Project>
+      <Name>Project.JoystickEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Project.Attack.csproj">
+      <Project>{17CFB336-2499-2646-0E6C-3AFECA957609}</Project>
+      <Name>Project.Attack</Name>
     </ProjectReference>
     <ProjectReference Include="Project.PlayerComponents.csproj">
       <Project>{2978C3E0-CA67-F57C-C7D1-4541C594B461}</Project>

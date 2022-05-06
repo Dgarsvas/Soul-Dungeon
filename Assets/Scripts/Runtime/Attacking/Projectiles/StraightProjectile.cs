@@ -10,6 +10,8 @@ public class StraightProjectile : BaseProjectile
     private Rigidbody rb;
     [SerializeField]
     private Collider col;
+    [SerializeField]
+    private int damage;
 
     private void OnValidate()
     {
@@ -24,13 +26,14 @@ public class StraightProjectile : BaseProjectile
 
     protected override void HandleCollision(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Entity"))
-        {
-            Debug.Log("Entity hit!");
-        }
-
         ContactPoint point = collision.GetContact(0);
         ParticleMaster.Instance.SpawnParticles(point.point, Quaternion.Euler(point.normal), ParticleType.SimpleHit);
+
+        if (collision.gameObject.CompareTag("Entity"))
+        {
+            collision.gameObject.GetComponent<HealthController>().TakeDamage(damage, -point.normal);
+        }
+        
         Destroy(gameObject);
     }
 }

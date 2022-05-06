@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour
         if (Instance != null)
         {
             Destroy(Instance);
-            PlayerControllerChanged?.Invoke(this);
         }
 
+        PlayerControllerChanged?.Invoke(this);
         Instance = this;
         Joystick.JoystickDown += JoystickDown;
         Joystick.JoystickUp += JoystickUp;

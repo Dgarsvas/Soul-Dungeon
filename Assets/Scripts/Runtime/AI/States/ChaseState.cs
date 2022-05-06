@@ -18,7 +18,6 @@ public class ChaseState : IState
 
     public void OnEnter()
     {
-        Debug.Log("Chase");
         target = PlayerController.Instance.transform;
         PlayerController.PlayerControllerChanged += PlayerController_PlayerControllerChanged;
         agent.isStopped = false;

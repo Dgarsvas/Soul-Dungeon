@@ -85,6 +85,8 @@ public class SoulShiftManager : MonoBehaviour
             MovementController movement = chosenEntity.gameObject.AddComponent<MovementController>();
             PlayerController player = chosenEntity.gameObject.AddComponent<PlayerController>();
             player.attackController = chosenEntity.gameObject.GetComponent<BaseAttackController>();
+
+            chosenEntity.isPlayer = true;
             MakePreviousPlayerEnitityIntoEnemy(curPlayerEntity);
         }
     }
@@ -96,7 +98,7 @@ public class SoulShiftManager : MonoBehaviour
         Destroy(curPlayerEntity.gameObject.GetComponent<PlayerAttackController>());
         Destroy(curPlayerEntity.gameObject.GetComponent<PlayerController>());
 
-        curPlayerEntity.gameObject.GetComponent<BaseEnemy>().isPlayer = false;
+        curPlayerEntity.isPlayer = false;
     }
 
     private void ActivateShiftControls(bool state)

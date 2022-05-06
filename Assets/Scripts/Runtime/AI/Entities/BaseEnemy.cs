@@ -17,43 +17,63 @@ public class BaseEnemy : BaseEntity
 
     private float distanceToPlayer;
 
+    ChaseState chase;
+    AttackState attack;
+    RetreatState retreat;
+    IdleState idle;
+
     public override void Start()
     {
         stateMachine = new StateMachine();
 
-        ChaseState chase = new ChaseState(navMeshAgent);
-        AttackState attack = new AttackState(attackController, navMeshAgent);
-        RetreatState retreat = new RetreatState(navMeshAgent);
+        chase = new ChaseState(navMeshAgent);
+        attack = new AttackState(attackController, navMeshAgent);
+        retreat = new RetreatState(navMeshAgent);
+        idle = new IdleState(navMeshAgent);
+
         stateMachine.AddTransition(chase, attack, () => { return distanceToPlayer < attackDistance; });
         stateMachine.AddTransition(attack, retreat, () => { return distanceToPlayer < retreatDistance && attackController.hasAttacked; });
         stateMachine.AddTransition(attack, chase, () => { return distanceToPlayer > attackDistance && attackController.hasAttacked; });
         stateMachine.AddTransition(retreat, chase, () => { return distanceToPlayer > stopRetreatDistance; });
 
         stateMachine.SetState(chase);
+        attackController.target = EntityManager.Instance.GetPlayer();
         base.Start();
     }
 
     private void Update()
     {
-        if (!isDead && !isPlayer)
+        if (isActive && !isPlayer)
         {
-            distanceToPlayer = (transform.position - PlayerController.Instance.transform.position).magnitude;
+            distanceToPlayer = (transform.position - attackController.target.position).magnitude;
             stateMachine?.Tick();
         }
     }
 
-    public override void TakeDamage(float damage, Vector3 dir)
+    protected override void TakeDamage(float damage, Vector3 dir)
     {
-        health -= damage;
+    }
 
-        if (health <= 0)
+    protected override void Despawn()
+    {
+        if (isPlayer)
         {
-            isDead = true;
+            EntityManager.Instance.PlayerDied();
+        }
+        Destroy(gameObject);
+    }
+
+    public override void ActivateEntity(bool state)
+    {
+        base.ActivateEntity(state);
+        if (!state)
+        {
+            stateMachine.SetState(idle);
         }
     }
 
-    public override void Despawn()
+    protected override void TargetChanged(Transform target)
     {
-        Destroy(gameObject);
+        attackController.target = target;
     }
 }

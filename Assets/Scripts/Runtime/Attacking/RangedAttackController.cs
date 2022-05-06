@@ -11,6 +11,5 @@ public class RangedAttackController : BaseAttackController
     {
         GameObject spawned = Instantiate(projectilePrefab, transform.position + transform.forward, Quaternion.identity);
         spawned.GetComponent<BaseProjectile>().Init(transform.position);
-        Debug.Log($"{gameObject.name} is attacking");
     }
 }

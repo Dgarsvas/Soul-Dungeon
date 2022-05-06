@@ -20,8 +20,6 @@ public class RetreatState : IState
 
     public void OnEnter()
     {
-        Debug.Log("Retreat");
-
         target = PlayerController.Instance.transform;
         PlayerController.PlayerControllerChanged += PlayerController_PlayerControllerChanged;
         agent.isStopped = false;

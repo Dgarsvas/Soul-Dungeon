@@ -130,3 +130,4 @@ MonoBehaviour:
   lifetime: 4
   rb: {fileID: 7199956296831566447}
   col: {fileID: 6517101951551077759}
+  damage: 10
