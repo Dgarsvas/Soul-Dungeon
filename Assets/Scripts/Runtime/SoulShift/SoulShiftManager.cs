@@ -128,6 +128,7 @@ public class SoulShiftManager : MonoBehaviour
     }
     private void MoveSelectionRingToEntity(BaseEntity chosenEntity)
     {
+        choiceRing.SetActive(true);
         choiceParticles.Play(true);
         choiceRing.transform.position = new Vector3(chosenEntity.transform.position.x, FLOOR_Y, chosenEntity.transform.position.z);
     }
