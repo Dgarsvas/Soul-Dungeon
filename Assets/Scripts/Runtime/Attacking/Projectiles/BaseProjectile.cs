@@ -21,7 +21,7 @@ public abstract class BaseProjectile : MonoBehaviour
         Destroy(obj);
     }
 
-    public abstract void Init(Vector3 targetPos);
+    public abstract void Init(Vector3 targetPos, float speed, float lifetime, int damage);
 
     private void OnCollisionEnter(Collision collision)
     {

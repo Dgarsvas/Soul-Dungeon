@@ -17,10 +17,10 @@ public class BaseEnemy : BaseEntity
 
     private float distanceToPlayer = float.MaxValue;
 
-    ChaseState chase;
-    AttackState attack;
-    RetreatState retreat;
-    IdleState idle;
+    private ChaseState chase;
+    private AttackState attack;
+    private RetreatState retreat;
+    private IdleState idle;
 
     public override void Start()
     {
@@ -32,12 +32,12 @@ public class BaseEnemy : BaseEntity
         idle = new IdleState(navMeshAgent);
 
         stateMachine.AddTransition(chase, attack, () => { return distanceToPlayer < attackDistance; });
-        stateMachine.AddTransition(attack, retreat, () => { return distanceToPlayer < retreatDistance && attackController.hasAttacked; });
-        stateMachine.AddTransition(attack, chase, () => { return distanceToPlayer > attackDistance && attackController.hasAttacked; });
+        stateMachine.AddTransition(attack, retreat, () => { return distanceToPlayer < retreatDistance && attackController.attackInProgress; });
+        stateMachine.AddTransition(attack, chase, () => { return distanceToPlayer > attackDistance && attackController.attackInProgress; });
         stateMachine.AddTransition(retreat, chase, () => { return distanceToPlayer > stopRetreatDistance; });
 
         stateMachine.SetState(chase);
-        attackController.target = EntityManager.Instance.GetPlayer();
+        attackController.target = EntityManager.Instance.GetPlayer().healthController;
         base.Start();
     }
 
@@ -52,8 +52,8 @@ public class BaseEnemy : BaseEntity
 
     private void UpdateDistanceToPlayer()
     {
-        distanceToPlayer = (transform.position - attackController.target.position).magnitude;
-        EntityManager.Instance.UpdateClosestEnemy(distanceToPlayer, transform);
+        distanceToPlayer = (transform.position - attackController.target.transform.position).magnitude;
+        EntityManager.Instance.UpdateClosestEnemy(distanceToPlayer, this);
     }
 
     protected override void TakeDamage(float damage, Vector3 dir)
@@ -79,9 +79,9 @@ public class BaseEnemy : BaseEntity
         }
     }
 
-    protected override void TargetChanged(Transform target)
+    protected override void TargetChanged(BaseEntity target)
     {
-        attackController.target = target;
+        attackController.target = target.healthController;
     }
 
     public override float GetDistanceToPlayer()

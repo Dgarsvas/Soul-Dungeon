@@ -18,14 +18,14 @@ public class AttackState : IState
         navMeshAgent.updateRotation = false;
         navMeshAgent.isStopped = true;
         attackController.canAttack = true;
-        attackController.hasAttacked = false;
+        attackController.attackInProgress = false;
     }
 
     public void OnExit()
     {
         navMeshAgent.updateRotation = true;
         attackController.canAttack = false;
-        attackController.hasAttacked = false;
+        attackController.attackInProgress = false;
     }
 
     public void Tick()

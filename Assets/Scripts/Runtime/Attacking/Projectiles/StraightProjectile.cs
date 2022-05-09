@@ -9,18 +9,17 @@ public class StraightProjectile : BaseProjectile
     [SerializeField]
     private Rigidbody rb;
     [SerializeField]
-    private Collider col;
-    [SerializeField]
     private int damage;
 
     private void OnValidate()
     {
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
     }
 
-    public override void Init(Vector3 targetPos)
+    public override void Init(Vector3 targetPos, float speed, float lifetime, int damage)
     {
+        this.damage = damage;
+        this.lifetime = lifetime;
         rb.AddForce(-(targetPos - transform.position).normalized * speed, ForceMode.VelocityChange);
     }
 

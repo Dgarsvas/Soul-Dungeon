@@ -4,23 +4,30 @@ using UnityEngine;
 
 public abstract class BaseAttackController : MonoBehaviour
 {
+    [HideInInspector]
     public bool canAttack;
-    public bool hasAttacked;
-    public Transform target;
+    [HideInInspector]
+    public bool attackInProgress;
+    [HideInInspector]
+    public HealthController target;
 
+
+    protected float timer;
+
+    [Header("General Properties")]
     [SerializeField]
     protected float reloadTime;
-    protected float timer;
+    [SerializeField]
+    protected int damage;
 
     private void Update()
     {
         if (canAttack)
         {
-            transform.LookAt(target);
+            transform.LookAt(target.transform);
             if (timer < 0)
             {
-                Attack();
-                hasAttacked = true;
+                PerformAttack();
                 timer = reloadTime;
             }
         }
@@ -28,5 +35,5 @@ public abstract class BaseAttackController : MonoBehaviour
         timer -= Time.deltaTime;
     }
 
-    public abstract void Attack();
+    public abstract IEnumerator PerformAttack();
 }

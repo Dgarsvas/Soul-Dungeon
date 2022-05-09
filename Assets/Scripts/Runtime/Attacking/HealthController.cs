@@ -8,7 +8,9 @@ public class HealthController : MonoBehaviour
     [SerializeField]
     private float health;
 
+    [HideInInspector]
     public UnityEvent OnDeath;
+    [HideInInspector]
     public UnityEvent<float, Vector3> OnDamageTaken;
 
     public virtual void TakeDamage(int damage, Vector3 dir)

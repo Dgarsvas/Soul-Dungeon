@@ -11,9 +11,12 @@ public class EntityManager : MonoBehaviour
 
     private List<BaseEntity> entities;
 
-    public UnityEvent<Transform> OnPlayerChanged;
+    public UnityEvent<BaseEntity> OnPlayerChanged;
 
-    private Transform curPlayerTransform;
+    private BaseEntity curPlayer;
+
+    float curClosestDistance = float.MaxValue;
+    BaseEntity curClosestEnemy;
 
     void Awake()
     {
@@ -37,29 +40,29 @@ public class EntityManager : MonoBehaviour
         PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
     }
 
-    float curClosestDistance = float.MaxValue;
-    Transform curClosestEnemyTransform;
 
-    public void UpdateClosestEnemy(float distance, Transform transform)
+
+    public void UpdateClosestEnemy(float distance, BaseEntity enemy)
     {
-        if (transform == curClosestEnemyTransform)
+        if (enemy == curClosestEnemy)
         {
             curClosestDistance = distance;
         }
         else if (distance < curClosestDistance)
         {
-            Debug.Log($"enemy {transform.name} is closer now");
+            Debug.Log($"enemy {enemy.name} is closer now");
             curClosestDistance = distance;
-            curClosestEnemyTransform = transform;
-            PlayerController.Instance.attackController.target = curClosestEnemyTransform;
+            curClosestEnemy = enemy;
+            PlayerController.Instance.attackController.target = curClosestEnemy.healthController;
         }
     }
 
     private void PlayerController_PlayerControllerChanged(PlayerController player)
     {
         Debug.Log($"player changed to {player.transform.name}");
-        OnPlayerChanged?.Invoke(player.transform);
-        curPlayerTransform = player.transform;
+        curPlayer = player.GetComponent<BaseEntity>();
+        OnPlayerChanged?.Invoke(curPlayer);
+        
     }
 
     public void AddEntity(BaseEntity entity)
@@ -79,9 +82,9 @@ public class EntityManager : MonoBehaviour
         index = availableEntities.IndexOf(PlayerController.Instance.GetComponent<BaseEntity>());
     }
 
-    public Transform GetPlayer()
+    public BaseEntity GetPlayer()
     {
-        return curPlayerTransform;
+        return curPlayer;
     }
 
     internal void PlayerDied()

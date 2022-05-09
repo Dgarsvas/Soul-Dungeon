@@ -14,8 +14,9 @@ public abstract class BaseEntity : MonoBehaviour
     protected NavMeshAgent navMeshAgent;
     protected StateMachine stateMachine;
     [SerializeField]
-    protected HealthController healthController;
+    public HealthController healthController;
 
+    [HideInInspector]
     public bool isPlayer;
 
     public virtual void Start()
@@ -36,7 +37,7 @@ public abstract class BaseEntity : MonoBehaviour
 
     protected abstract void TakeDamage(float damage, Vector3 dir);
 
-    protected abstract void TargetChanged(Transform target);
+    protected abstract void TargetChanged(BaseEntity target);
 
     protected abstract void Despawn();
 
