@@ -2,7 +2,8 @@
     "name": "Project.Attack",
     "rootNamespace": "",
     "references": [
-        "GUID:67873b6ffc0e55843a243dfd820311c0"
+        "GUID:67873b6ffc0e55843a243dfd820311c0",
+        "GUID:13dde45fdab320b4c985d4694552bcd9"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

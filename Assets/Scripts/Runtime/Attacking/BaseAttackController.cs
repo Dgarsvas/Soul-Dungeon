@@ -11,7 +11,6 @@ public abstract class BaseAttackController : MonoBehaviour
     [HideInInspector]
     public HealthController target;
 
-
     protected float timer;
 
     [Header("General Properties")]
@@ -20,6 +19,8 @@ public abstract class BaseAttackController : MonoBehaviour
     [SerializeField]
     protected int damage;
 
+    private Coroutine attackCoroutine;
+
     private void Update()
     {
         if (canAttack)
@@ -27,7 +28,7 @@ public abstract class BaseAttackController : MonoBehaviour
             transform.LookAt(target.transform);
             if (timer < 0)
             {
-                PerformAttack();
+                attackCoroutine = StartCoroutine(PerformAttack());
                 timer = reloadTime;
             }
         }
@@ -36,4 +37,10 @@ public abstract class BaseAttackController : MonoBehaviour
     }
 
     public abstract IEnumerator PerformAttack();
+
+    public virtual void CancelAttack()
+    {
+        StopCoroutine(attackCoroutine);
+        attackInProgress = false;
+    }
 }

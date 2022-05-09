@@ -14,7 +14,6 @@ public abstract class BaseProjectile : MonoBehaviour
         StartCoroutine(DestroyAfter(gameObject, lifetime));
     }
 
-
     private IEnumerator DestroyAfter(GameObject obj, float time)
     {
         yield return new WaitForSeconds(time);

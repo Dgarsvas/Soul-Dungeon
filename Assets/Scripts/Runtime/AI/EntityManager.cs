@@ -9,14 +9,13 @@ public class EntityManager : MonoBehaviour
 {
     public static EntityManager Instance;
 
-    private List<BaseEntity> entities;
-
+    [HideInInspector]
     public UnityEvent<BaseEntity> OnPlayerChanged;
 
     private BaseEntity curPlayer;
-
-    float curClosestDistance = float.MaxValue;
-    BaseEntity curClosestEnemy;
+    internal List<BaseEntity> entities;
+    private float curClosestDistance = float.MaxValue;
+    private BaseEntity curClosestEnemy;
 
     void Awake()
     {
@@ -40,8 +39,6 @@ public class EntityManager : MonoBehaviour
         PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
     }
 
-
-
     public void UpdateClosestEnemy(float distance, BaseEntity enemy)
     {
         if (enemy == curClosestEnemy)
@@ -62,7 +59,6 @@ public class EntityManager : MonoBehaviour
         Debug.Log($"player changed to {player.transform.name}");
         curPlayer = player.GetComponent<BaseEntity>();
         OnPlayerChanged?.Invoke(curPlayer);
-        
     }
 
     public void AddEntity(BaseEntity entity)

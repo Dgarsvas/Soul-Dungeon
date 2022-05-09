@@ -171,10 +171,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 0
-  hasAttacked: 0
+  attackInProgress: 0
   target: {fileID: 0}
   reloadTime: 0.5
+  damage: 10
   projectilePrefab: {fileID: 7661931154034135387, guid: e0a77566bab0035479c17ff77e834739, type: 3}
+  projectileSpeed: 10
+  projectileLifetime: 2
 --- !u!114 &4719896266886378243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  startingHealth: 100
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
