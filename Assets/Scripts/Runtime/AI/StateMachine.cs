@@ -9,6 +9,8 @@ public class StateMachine
     private List<Transition> curTransitions = new List<Transition>();
     private List<Transition> anyTransitions = new List<Transition>();
 
+    private List<IState> allPosibleStates;
+
     private static readonly List<Transition> EmptyTransitions = new List<Transition>(0);
 
     public void Tick()
@@ -43,6 +45,8 @@ public class StateMachine
 
     public void AddTransition(IState from, IState to, Func<bool> predicate)
     {
+        TryAddState(from);
+        TryAddState(to);
         if (transitions.TryGetValue(from.GetType(), out var newTransitions) == false)
         {
             newTransitions = new List<Transition>();
@@ -54,7 +58,30 @@ public class StateMachine
 
     public void AddAnyTransition(IState state, Func<bool> predicate)
     {
+        TryAddState(state);
         anyTransitions.Add(new Transition(state, predicate));
+    }
+
+    private void TryAddState(IState state)
+    {
+        if (allPosibleStates == null)
+        {
+            allPosibleStates = new List<IState>();
+        }
+
+        if (!allPosibleStates.Contains(state))
+        {
+            allPosibleStates.Add(state);
+        }
+    }
+
+
+    internal void SafeDestroy()
+    {
+        foreach (IState state in allPosibleStates)
+        {
+            state.SafeDestroy();
+        }
     }
 
     private class Transition

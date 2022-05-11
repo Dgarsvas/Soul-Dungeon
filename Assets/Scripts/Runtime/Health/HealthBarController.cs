@@ -29,7 +29,7 @@ public class HealthBarController : MonoBehaviour
 
     public void StopTrackingHealth(HealthController entity)
     {
-        Destroy(healthDict[entity].gameObject);
+        healthDict[entity].SafeDestroy();
         healthDict.Remove(entity);
     }
 

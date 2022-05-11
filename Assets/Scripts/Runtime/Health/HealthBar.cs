@@ -32,9 +32,13 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public void SafeDestroy()
     {
         healthRef.OnDamageTaken.RemoveListener(DamageTaken);
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void DamageTaken(float damageAmount, Vector3 dir)

@@ -3,4 +3,5 @@
     void Tick();
     void OnEnter();
     void OnExit();
+    void SafeDestroy();
 }

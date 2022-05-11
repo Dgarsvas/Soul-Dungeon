@@ -206,7 +206,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 2.8
+  m_Speed: 3.2
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 100
@@ -249,8 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817f5d84d55b4c14b845a49e2673b283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  startingHealth: 100
+  health: 60
+  startingHealth: 60
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -274,5 +274,6 @@ MonoBehaviour:
   target: {fileID: 0}
   reloadTime: 1.5
   damage: 20
-  attackRange: 2
   attackWindupTime: 1
+  attackWinddownTime: 0.5
+  attackRange: 2

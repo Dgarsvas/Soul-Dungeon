@@ -41,5 +41,10 @@ public class RetreatState : IState
     {
         agent.SetDestination(GetRetreatPos());
     }
+
+    public void SafeDestroy()
+    {
+        PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
+    }
 }
 

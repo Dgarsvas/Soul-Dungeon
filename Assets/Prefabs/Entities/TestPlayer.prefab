@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackController: {fileID: 8893893774005009571}
   agent: {fileID: 7278509053718587234}
-  speedModifier: 4
+  speedModifier: 4.5
 --- !u!114 &7278509053605809905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +175,8 @@ MonoBehaviour:
   target: {fileID: 0}
   reloadTime: 0.5
   damage: 10
+  attackWindupTime: 0
+  attackWinddownTime: 0
   projectilePrefab: {fileID: 7661931154034135387, guid: e0a77566bab0035479c17ff77e834739, type: 3}
   projectileSpeed: 10
   projectileLifetime: 2

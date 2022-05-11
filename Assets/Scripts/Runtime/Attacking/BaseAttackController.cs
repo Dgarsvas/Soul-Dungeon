@@ -18,6 +18,10 @@ public abstract class BaseAttackController : MonoBehaviour
     protected float reloadTime;
     [SerializeField]
     protected int damage;
+    [SerializeField]
+    protected float attackWindupTime;
+    [SerializeField]
+    protected float attackWinddownTime;
 
     private Coroutine attackCoroutine;
 

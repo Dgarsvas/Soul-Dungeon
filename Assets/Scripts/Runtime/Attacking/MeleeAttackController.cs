@@ -7,8 +7,6 @@ public class MeleeAttackController : BaseAttackController
     [Header("Melee properties")]
     [SerializeField]
     private float attackRange;
-    [SerializeField]
-    private float attackWindupTime;
 
     public override IEnumerator PerformAttack()
     {
@@ -19,6 +17,7 @@ public class MeleeAttackController : BaseAttackController
         {
             target.TakeDamage(damage, -dir.normalized);
         }
+        yield return new WaitForSeconds(attackWinddownTime);
 
         attackInProgress = false;
     }

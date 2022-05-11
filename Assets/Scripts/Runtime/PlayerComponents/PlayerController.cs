@@ -8,8 +8,8 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
-    public delegate void JoystickInteractionHandler(PlayerController player);
-    public static event JoystickInteractionHandler PlayerControllerChanged;
+    public delegate void PlayerControllerChangedEvent(PlayerController player);
+    public static event PlayerControllerChangedEvent PlayerControllerChanged;
     public BaseAttackController attackController;
 
 

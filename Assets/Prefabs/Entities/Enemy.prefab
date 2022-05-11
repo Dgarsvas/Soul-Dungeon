@@ -272,8 +272,10 @@ MonoBehaviour:
   canAttack: 0
   attackInProgress: 0
   target: {fileID: 0}
-  reloadTime: 1.5
+  reloadTime: 2
   damage: 20
+  attackWindupTime: 0.5
+  attackWinddownTime: 0.5
   projectilePrefab: {fileID: 7661931154034135387, guid: e0a77566bab0035479c17ff77e834739, type: 3}
   projectileSpeed: 10
   projectileLifetime: 2

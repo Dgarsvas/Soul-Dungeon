@@ -28,6 +28,10 @@ public class AttackState : IState
         attackController.attackInProgress = false;
     }
 
+    public void SafeDestroy()
+    {
+    }
+
     public void Tick()
     {
     }

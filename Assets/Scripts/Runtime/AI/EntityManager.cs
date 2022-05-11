@@ -9,8 +9,11 @@ public class EntityManager : MonoBehaviour
 {
     public static EntityManager Instance;
 
-    [HideInInspector]
-    public UnityEvent<BaseEntity> OnPlayerChanged;
+    public delegate void OnPlayerChangedEvent(BaseEntity entity);
+    public static event OnPlayerChangedEvent PlayerChanged;
+
+    public delegate void OnPlayerDiedEvent();
+    public static event OnPlayerDiedEvent PlayerDied;
 
     private BaseEntity curPlayer;
     internal List<BaseEntity> entities;
@@ -47,7 +50,6 @@ public class EntityManager : MonoBehaviour
         }
         else if (distance < curClosestDistance)
         {
-            Debug.Log($"enemy {enemy.name} is closer now");
             curClosestDistance = distance;
             curClosestEnemy = enemy;
             PlayerController.Instance.attackController.target = curClosestEnemy.healthController;
@@ -56,9 +58,8 @@ public class EntityManager : MonoBehaviour
 
     private void PlayerController_PlayerControllerChanged(PlayerController player)
     {
-        Debug.Log($"player changed to {player.transform.name}");
         curPlayer = player.GetComponent<BaseEntity>();
-        OnPlayerChanged?.Invoke(curPlayer);
+        PlayerChanged?.Invoke(curPlayer);
     }
 
     public void AddEntity(BaseEntity entity)
@@ -70,6 +71,23 @@ public class EntityManager : MonoBehaviour
     public void RemoveEntity(BaseEntity entity)
     {
         entities.Remove(entity);
+        if (!entity.isPlayer && entity == curClosestEnemy)
+        {
+            FindNewClosestEntityForPlayer();
+        }
+    }
+
+    private void FindNewClosestEntityForPlayer()
+    {
+        curClosestDistance = float.MaxValue;
+        curClosestEnemy = null;
+        foreach (var entity in entities)
+        {
+            if (!entity.isPlayer)
+            {
+                entity.UpdateDistanceToPlayer();
+            }
+        }
     }
 
     public void GetAvailableEntities(out List<BaseEntity> availableEntities, out int index)
@@ -83,11 +101,12 @@ public class EntityManager : MonoBehaviour
         return curPlayer;
     }
 
-    internal void PlayerDied()
+    internal void PlayerHasDied()
     {
         foreach (BaseEntity entity in entities)
         {
             entity.ActivateEntity(false);
         }
+        PlayerDied?.Invoke();
     }
 }

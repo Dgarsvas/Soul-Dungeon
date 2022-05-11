@@ -15,8 +15,6 @@ public class BaseEnemy : BaseEntity
     [SerializeField]
     private float stopRetreatDistance;
 
-    private float distanceToPlayer = float.MaxValue;
-
     private ChaseState chase;
     private AttackState attack;
     private RetreatState retreat;
@@ -32,8 +30,8 @@ public class BaseEnemy : BaseEntity
         idle = new IdleState(navMeshAgent);
 
         stateMachine.AddTransition(chase, attack, () => { return distanceToPlayer < attackDistance; });
-        stateMachine.AddTransition(attack, retreat, () => { return distanceToPlayer < retreatDistance && attackController.attackInProgress; });
-        stateMachine.AddTransition(attack, chase, () => { return distanceToPlayer > attackDistance && attackController.attackInProgress; });
+        stateMachine.AddTransition(attack, retreat, () => { return distanceToPlayer < retreatDistance && !attackController.attackInProgress; });
+        stateMachine.AddTransition(attack, chase, () => { return distanceToPlayer > attackDistance && !attackController.attackInProgress; });
         stateMachine.AddTransition(retreat, chase, () => { return distanceToPlayer > stopRetreatDistance; });
 
         stateMachine.SetState(chase);
@@ -50,7 +48,7 @@ public class BaseEnemy : BaseEntity
         }
     }
 
-    private void UpdateDistanceToPlayer()
+    public override void UpdateDistanceToPlayer()
     {
         distanceToPlayer = (transform.position - attackController.target.transform.position).magnitude;
         EntityManager.Instance.UpdateClosestEnemy(distanceToPlayer, this);
@@ -63,10 +61,13 @@ public class BaseEnemy : BaseEntity
 
     protected override void Despawn()
     {
+        EntityManager.Instance.RemoveEntity(this);
         if (isPlayer)
         {
-            EntityManager.Instance.PlayerDied();
+            EntityManager.Instance.PlayerHasDied();
         }
+        ParticleMaster.Instance.SpawnParticles(transform.position, ParticleType.DeathSkull);
+        stateMachine.SafeDestroy();
         Destroy(gameObject);
     }
 

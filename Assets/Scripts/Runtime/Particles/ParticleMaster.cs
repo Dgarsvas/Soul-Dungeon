@@ -8,7 +8,8 @@ public enum ParticleType
     DarkAura,
     YellowAura,
     PurpleAura,
-    MagicExplosion
+    MagicExplosion,
+    DeathSkull
 }
 
 public class ParticleMaster : MonoBehaviour

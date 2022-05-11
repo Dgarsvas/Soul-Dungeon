@@ -34,4 +34,9 @@ public class ChaseState : IState
     {
         agent.SetDestination(target.position);
     }
+
+    public void SafeDestroy()
+    {
+        PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
+    }
 }

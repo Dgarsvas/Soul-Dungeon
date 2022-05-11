@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SoulShiftManager : MonoBehaviour
@@ -13,6 +14,10 @@ public class SoulShiftManager : MonoBehaviour
     private AnimationCurve slowDownCurve;
 
     [Header("References")]
+    [SerializeField]
+    private GameObject deadMenu;
+    [SerializeField]
+    private GameObject shiftStartControls;
     [SerializeField]
     private Image vignette;
     [SerializeField]
@@ -38,6 +43,20 @@ public class SoulShiftManager : MonoBehaviour
 
     private List<BaseEntity> availableEntities;
     private int index;
+
+    private void Awake()
+    {
+        EntityManager.PlayerDied += PlayerDied;
+        if (Time.timeScale == 0)
+        {
+            StartCoroutine(SlowDownTime(false));
+        }
+    }
+
+    private void OnDestroy()
+    {
+        EntityManager.PlayerDied -= PlayerDied;
+    }
 
     public void StartSoulShift()
     {
@@ -171,5 +190,23 @@ public class SoulShiftManager : MonoBehaviour
         {
             hasChosen = true;
         }
+    }
+
+    private void PlayerDied()
+    {
+        StartCoroutine(ShowEndMenuCoroutine());
+    }
+
+    private IEnumerator ShowEndMenuCoroutine()
+    {
+        joystick.SetActive(false);
+        shiftStartControls.SetActive(false);
+        yield return SlowDownTime(true);
+        deadMenu.SetActive(true);
+    }
+
+    public void RestartPressed()
+    {
+        SceneManager.LoadScene(0);
     }
 }

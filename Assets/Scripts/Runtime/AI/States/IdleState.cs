@@ -17,12 +17,13 @@ public class IdleState : IState
 
     public void OnExit()
     {
+    }
 
+    public void SafeDestroy()
+    {
     }
 
     public void Tick()
     {
-
     }
-
 }
