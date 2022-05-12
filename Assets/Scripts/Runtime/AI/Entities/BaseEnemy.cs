@@ -96,4 +96,23 @@ public class BaseEnemy : BaseEntity
             return distanceToPlayer;
         }
     }
+
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (isPlayer)
+        {
+            return;
+        }
+        UnityEditor.Handles.color = Color.red;
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, attackDistance, 1f);
+
+        UnityEditor.Handles.color = Color.blue;
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, retreatDistance, 1f);
+
+        UnityEditor.Handles.color = Color.green;
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, stopRetreatDistance, 1f);
+    }
+#endif
 }

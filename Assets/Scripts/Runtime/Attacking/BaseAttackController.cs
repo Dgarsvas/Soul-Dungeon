@@ -22,6 +22,8 @@ public abstract class BaseAttackController : MonoBehaviour
     protected float attackWindupTime;
     [SerializeField]
     protected float attackWinddownTime;
+    [SerializeField]
+    protected Animator animator;
 
     private Coroutine attackCoroutine;
 

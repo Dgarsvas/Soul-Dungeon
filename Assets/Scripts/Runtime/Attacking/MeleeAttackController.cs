@@ -11,7 +11,11 @@ public class MeleeAttackController : BaseAttackController
     public override IEnumerator PerformAttack()
     {
         attackInProgress = true;
+        animator.SetTrigger("Attack");
         yield return new WaitForSeconds(attackWindupTime);
+        ParticleMaster.Instance.SpawnParticles(new Vector3(transform.position.x, -0.5f, transform.position.z), ParticleType.HitSmokePuff);
+        animator.ResetTrigger("Attack");
+
         Vector3 dir = target.transform.position - transform.position;
         if (dir.magnitude < attackRange)
         {

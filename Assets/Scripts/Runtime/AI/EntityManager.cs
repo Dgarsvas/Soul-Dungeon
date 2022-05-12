@@ -15,6 +15,8 @@ public class EntityManager : MonoBehaviour
     public delegate void OnPlayerDiedEvent();
     public static event OnPlayerDiedEvent PlayerDied;
 
+    [SerializeField]
+    private GameObject currentPlayerTargetIdentifier;
     private BaseEntity curPlayer;
     internal List<BaseEntity> entities;
     private float curClosestDistance = float.MaxValue;
@@ -52,7 +54,20 @@ public class EntityManager : MonoBehaviour
         {
             curClosestDistance = distance;
             curClosestEnemy = enemy;
+            currentPlayerTargetIdentifier.SetActive(true);
             PlayerController.Instance.attackController.target = curClosestEnemy.healthController;
+        }
+    }
+
+    private void Update()
+    {
+        if (curClosestEnemy != null)
+        {
+            currentPlayerTargetIdentifier.transform.position = new Vector3(curClosestEnemy.transform.position.x, -0.5f, curClosestEnemy.transform.position.z);
+        }
+        else
+        {
+            currentPlayerTargetIdentifier.SetActive(false);
         }
     }
 

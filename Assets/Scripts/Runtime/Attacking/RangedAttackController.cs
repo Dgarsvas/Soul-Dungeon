@@ -15,10 +15,15 @@ public class RangedAttackController : BaseAttackController
     public override IEnumerator PerformAttack()
     {
         attackInProgress = true;
+
+        animator.SetTrigger("Shoot");
         yield return new WaitForSeconds(attackWindupTime);
+        animator.ResetTrigger("Shoot");
+
         GameObject spawned = Instantiate(projectilePrefab, transform.position + transform.forward, Quaternion.identity);
         spawned.GetComponent<BaseProjectile>().Init(transform.position, projectileSpeed, projectileLifetime, damage);
         yield return new WaitForSeconds(attackWinddownTime);
+       
         attackInProgress = false;
     }
 }
