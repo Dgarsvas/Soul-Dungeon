@@ -128,7 +128,6 @@ MonoBehaviour:
   attackWindupTime: 0.1
   attackWinddownTime: 0.4
   animator: {fileID: 4401516501129024862}
-  anim: {fileID: 0}
   projectilePrefab: {fileID: 7661931154034135387, guid: e0a77566bab0035479c17ff77e834739, type: 3}
   projectileSpeed: 10
   projectileLifetime: 2
@@ -144,8 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817f5d84d55b4c14b845a49e2673b283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
-  startingHealth: 500
+  health: 100
+  startingHealth: 100
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
