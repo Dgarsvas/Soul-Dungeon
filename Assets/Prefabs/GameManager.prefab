@@ -188,11 +188,14 @@ MonoBehaviour:
   deadMenu: {fileID: 0}
   shiftStartControls: {fileID: 0}
   vignette: {fileID: 0}
+  progressFill: {fileID: 0}
+  soulShiftButton: {fileID: 0}
   joystick: {fileID: 0}
   shiftControls: {fileID: 0}
   playerCam: {fileID: 0}
   choiceRing: {fileID: 5499076561297290564}
   choiceParticles: {fileID: 5499076561051119804}
+  currentSoulShiftUsed: {fileID: 11400000, guid: fcefea9c734a0a94fb1dc14554e481be, type: 2}
 --- !u!114 &5499076560940526162
 MonoBehaviour:
   m_ObjectHideFlags: 0

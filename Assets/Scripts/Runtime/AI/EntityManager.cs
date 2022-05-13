@@ -12,6 +12,9 @@ public class EntityManager : MonoBehaviour
     public delegate void OnPlayerChangedEvent(BaseEntity entity);
     public static event OnPlayerChangedEvent PlayerChanged;
 
+    public delegate void OnEntityKilledEvent(BaseEntity entity);
+    public static event OnEntityKilledEvent EntityKilled;
+
     public delegate void OnPlayerDiedEvent();
     public static event OnPlayerDiedEvent PlayerDied;
 
@@ -32,16 +35,16 @@ public class EntityManager : MonoBehaviour
 
         if (PlayerController.Instance != null)
         {
-            PlayerController_PlayerControllerChanged(PlayerController.Instance);
+            PlayerControllerChanged(PlayerController.Instance);
         }
-        PlayerController.PlayerControllerChanged += PlayerController_PlayerControllerChanged;
+        PlayerController.PlayerControllerChanged += PlayerControllerChanged;
 
         entities = new List<BaseEntity>();
     }
 
     private void OnDestroy()
     {
-        PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
+        PlayerController.PlayerControllerChanged -= PlayerControllerChanged;
     }
 
     public void UpdateClosestEnemy(float distance, BaseEntity enemy)
@@ -71,7 +74,7 @@ public class EntityManager : MonoBehaviour
         }
     }
 
-    private void PlayerController_PlayerControllerChanged(PlayerController player)
+    private void PlayerControllerChanged(PlayerController player)
     {
         curPlayer = player.GetComponent<BaseEntity>();
         PlayerChanged?.Invoke(curPlayer);
@@ -86,7 +89,17 @@ public class EntityManager : MonoBehaviour
     public void RemoveEntity(BaseEntity entity)
     {
         entities.Remove(entity);
-        if (!entity.isPlayer && entity == curClosestEnemy)
+        if (entity.isPlayer)
+        {
+            PlayerHasDied();
+        }
+        else
+        {
+            CurrentStatistics.EnemyKilled();
+            EntityKilled?.Invoke(entity);
+        }
+
+        if (entity == curClosestEnemy)
         {
             FindNewClosestEntityForPlayer();
         }

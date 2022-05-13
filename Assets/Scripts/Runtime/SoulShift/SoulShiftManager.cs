@@ -21,6 +21,10 @@ public class SoulShiftManager : MonoBehaviour
     [SerializeField]
     private Image vignette;
     [SerializeField]
+    private Image progressFill;
+    [SerializeField]
+    private Button soulShiftButton;
+    [SerializeField]
     private GameObject joystick;
     [SerializeField]
     private GameObject shiftControls;
@@ -31,6 +35,10 @@ public class SoulShiftManager : MonoBehaviour
     [SerializeField]
     private ParticleSystem choiceParticles;
 
+    [Header("Soulshift properties")]
+    [SerializeField]
+    SoulShiftTypeScriptableObject currentSoulShiftUsed;
+
     private const float FLOOR_Y = -0.5f;
 
     private bool hasChosen;
@@ -39,7 +47,6 @@ public class SoulShiftManager : MonoBehaviour
     private Coroutine shiftCoroutine;
     private BaseEntity chosenEntity;
     private BaseEntity curPlayerEntity;
-
 
     private List<BaseEntity> availableEntities;
     private int index;
@@ -51,11 +58,27 @@ public class SoulShiftManager : MonoBehaviour
         {
             StartCoroutine(SlowDownTime(false));
         }
+
+        switch (currentSoulShiftUsed.Type)
+        {
+            case SoulShiftActivationType.Kills:
+                EntityManager.EntityKilled += EntityGotKilled;
+                break;
+            case SoulShiftActivationType.LevelsPassed:
+                break;
+            case SoulShiftActivationType.DamageDealt:
+                break;
+            case SoulShiftActivationType.Time:
+                break;
+        }
+
+        AllowSoulShift(currentSoulShiftUsed.GetSoulShiftProgress() >= 1);
     }
 
     private void OnDestroy()
     {
         EntityManager.PlayerDied -= PlayerDied;
+        EntityManager.EntityKilled -= EntityGotKilled;
     }
 
     public void StartSoulShift()
@@ -95,6 +118,14 @@ public class SoulShiftManager : MonoBehaviour
         hasChosen = false;
         curPlayerEntity = null;
         choiceParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        
+        CurrentStatistics.SoulShiftUsed();
+        UpdateSoulShiftProgress();
+    }
+
+    private void AllowSoulShift(bool state)
+    {
+        soulShiftButton.interactable = state;
     }
 
     private void ShiftSoulToChosenEntity()
@@ -190,6 +221,18 @@ public class SoulShiftManager : MonoBehaviour
         {
             hasChosen = true;
         }
+    }
+
+    private void EntityGotKilled(BaseEntity entity)
+    {
+        UpdateSoulShiftProgress();
+    }
+
+    private void UpdateSoulShiftProgress()
+    {
+        float progress = currentSoulShiftUsed.GetSoulShiftProgress();
+        progressFill.fillAmount = progress;
+        AllowSoulShift(progress >= 1f);
     }
 
     private void PlayerDied()
