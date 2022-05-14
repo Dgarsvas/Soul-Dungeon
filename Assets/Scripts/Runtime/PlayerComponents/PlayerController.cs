@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private float speedModifier = 2f;
 
     private bool joystickIsDown;
+    private bool canAttack;
 
     void Awake()
     {
@@ -30,7 +31,6 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(Instance);
         }
-
         agent = GetComponent<NavMeshAgent>();
         speedModifier = agent.speed;
         agent.updateRotation = false;
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         Instance = this;
         Joystick.JoystickDown += JoystickDown;
         Joystick.JoystickUp += JoystickUp;
+        EnableAttack(true);
     }
 
     private void OnDestroy()
@@ -51,7 +52,10 @@ public class PlayerController : MonoBehaviour
     {
         joystickIsDown = false;
         agent.isStopped = true;
-        attackController.canAttack = true;
+        if (canAttack)
+        {
+            attackController.canAttack = true;
+        }
     }
 
     private void JoystickDown()
@@ -70,6 +74,15 @@ public class PlayerController : MonoBehaviour
             dir = dir.normalized * TARGET_DISTANCE;
             agent.SetDestination(transform.position + new Vector3(dir.x, 0f, dir.y));
             transform.rotation = Quaternion.LookRotation(new Vector3(dir.x, 0f, dir.y));
+        }
+    }
+
+    public void EnableAttack(bool state)
+    {
+        canAttack = state;
+        if (!state)
+        {
+            attackController.canAttack = false;
         }
     }
 }

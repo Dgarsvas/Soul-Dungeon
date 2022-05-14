@@ -15,6 +15,9 @@ public class EntityManager : MonoBehaviour
     public delegate void OnEntityKilledEvent(BaseEntity entity);
     public static event OnEntityKilledEvent EntityKilled;
 
+    public delegate void OnAllEnemiesKilled();
+    public static event OnAllEnemiesKilled AllEnemiesKilled;
+
     public delegate void OnPlayerDiedEvent();
     public static event OnPlayerDiedEvent PlayerDied;
 
@@ -97,6 +100,11 @@ public class EntityManager : MonoBehaviour
         {
             CurrentStatistics.EnemyKilled();
             EntityKilled?.Invoke(entity);
+            if (entities.Count == 1 && entities[0].isPlayer)
+            {
+                AllEnemiesKilled?.Invoke();
+                PlayerController.Instance.EnableAttack(false);
+            }
         }
 
         if (entity == curClosestEnemy)
