@@ -8,16 +8,13 @@ public class SqrDistance
 {
     [SerializeField]
     private float actualDistance;
+    [SerializeField]
+    private float sqrDistance = float.MaxValue;
 
     public float DistanceSqr
     {
         get
         {
-            if (sqrDistance == float.MaxValue)
-            {
-                sqrDistance = actualDistance * actualDistance;
-            }
-
             return sqrDistance;
         }
     }
@@ -29,6 +26,4 @@ public class SqrDistance
             return actualDistance;
         }
     }
-
-    private float sqrDistance = float.MaxValue;
 }

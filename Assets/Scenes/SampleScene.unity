@@ -1481,6 +1481,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2433340765884014826, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
+      propertyPath: attackDist.sqrDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433340765884014826, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
+      propertyPath: retreatDist.sqrDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433340765884014826, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
+      propertyPath: stopRetreatDist.sqrDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2433340765884014835, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2949,6 +2961,18 @@ PrefabInstance:
       propertyPath: stopRetreatDistance
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2937864066807069480, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
+      propertyPath: attackDist.sqrDistance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2937864066807069480, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
+      propertyPath: retreatDist.sqrDistance
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2937864066807069480, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
+      propertyPath: stopRetreatDist.sqrDistance
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 2937864066807069481, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
       propertyPath: damage
       value: 15
@@ -4407,6 +4431,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2937864066807069480, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
+      propertyPath: attackDist.sqrDistance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2937864066807069480, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
+      propertyPath: retreatDist.sqrDistance
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2937864066807069480, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
+      propertyPath: stopRetreatDist.sqrDistance
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 2937864066807069489, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -4553,6 +4589,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7278509053605809905, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
+      propertyPath: attackDist.sqrDistance
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278509053605809905, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
+      propertyPath: retreatDist.sqrDistance
+      value: 6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278509053605809905, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
+      propertyPath: attackDist.actualDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7278509053605809905, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
+      propertyPath: stopRetreatDist.sqrDistance
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7278509053718587232, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4707,6 +4759,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2433340765884014826, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
+      propertyPath: attackDist.sqrDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433340765884014826, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
+      propertyPath: retreatDist.sqrDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433340765884014826, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
+      propertyPath: stopRetreatDist.sqrDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2433340765884014835, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
       propertyPath: m_RootOrder
       value: 10
