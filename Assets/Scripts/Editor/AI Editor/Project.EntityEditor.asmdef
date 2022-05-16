@@ -1,0 +1,18 @@
+{
+    "name": "Project.EntityEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:767f46d24fe63634b8beaea486e7b948"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

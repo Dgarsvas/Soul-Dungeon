@@ -19,7 +19,7 @@ public abstract class BaseEntity : MonoBehaviour
     //[HideInInspector]
     public bool isPlayer;
 
-    protected float distanceToPlayer = float.MaxValue;
+    protected float distanceToPlayerSqr = float.MaxValue;
 
 
     public virtual void Start()
@@ -40,7 +40,7 @@ public abstract class BaseEntity : MonoBehaviour
 
     public virtual void UpdateDistanceToPlayer()
     {
-        distanceToPlayer = float.MaxValue;
+        distanceToPlayerSqr = float.MaxValue;
     }
 
     protected abstract void TakeDamage(float damage, Vector3 dir);

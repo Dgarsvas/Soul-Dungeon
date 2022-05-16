@@ -72,8 +72,11 @@ public class PlayerController : MonoBehaviour
             Vector2 dir = offset * Joystick.Instance.Direction;
             agent.speed = dir.magnitude * speedModifier;
             dir = dir.normalized * TARGET_DISTANCE;
-            agent.SetDestination(transform.position + new Vector3(dir.x, 0f, dir.y));
-            transform.rotation = Quaternion.LookRotation(new Vector3(dir.x, 0f, dir.y));
+            if (dir != Vector2.zero)
+            {
+                agent.SetDestination(transform.position + new Vector3(dir.x, 0f, dir.y));
+                transform.rotation = Quaternion.LookRotation(new Vector3(dir.x, 0f, dir.y));
+            }
         }
     }
 

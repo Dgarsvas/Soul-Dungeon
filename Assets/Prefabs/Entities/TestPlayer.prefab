@@ -105,9 +105,12 @@ MonoBehaviour:
   healthController: {fileID: 4719896266886378243}
   isPlayer: 1
   attackController: {fileID: 8893893774005009571}
-  attackDistance: 3
-  retreatDistance: 1.5
-  stopRetreatDistance: 5
+  attackDist:
+    actualDistance: 4
+  retreatDist:
+    actualDistance: 2.5
+  stopRetreatDist:
+    actualDistance: 5
 --- !u!114 &8893893774005009571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +127,7 @@ MonoBehaviour:
   attackInProgress: 0
   target: {fileID: 0}
   reloadTime: 0.5
-  damage: 10
+  damage: 15
   attackWindupTime: 0.1
   attackWinddownTime: 0.4
   animator: {fileID: 4401516501129024862}

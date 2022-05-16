@@ -170,9 +170,12 @@ MonoBehaviour:
   healthController: {fileID: 7847121020870388431}
   isPlayer: 0
   attackController: {fileID: 2433340765884014827}
-  attackDistance: 1
-  retreatDistance: 0
-  stopRetreatDistance: 0
+  attackDist:
+    actualDistance: 2
+  retreatDist:
+    actualDistance: 0
+  stopRetreatDist:
+    actualDistance: 0
 --- !u!114 &7847121020870388431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +213,7 @@ MonoBehaviour:
   target: {fileID: 0}
   reloadTime: 1.5
   damage: 20
-  attackWindupTime: 0.95
+  attackWindupTime: 0.9
   attackWinddownTime: 0.5
   animator: {fileID: 4937932924952657472}
   attackRange: 2

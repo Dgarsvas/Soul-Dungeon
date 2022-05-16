@@ -9,11 +9,11 @@ public class BaseEnemy : BaseEntity
 
     [Header("Distances")]
     [SerializeField]
-    private float attackDistance;
+    private SqrDistance attackDist;
     [SerializeField]
-    private float retreatDistance;
+    private SqrDistance retreatDist;
     [SerializeField]
-    private float stopRetreatDistance;
+    private SqrDistance stopRetreatDist;
 
     private ChaseState chase;
     private AttackState attack;
@@ -29,10 +29,10 @@ public class BaseEnemy : BaseEntity
         retreat = new RetreatState(navMeshAgent);
         idle = new IdleState(navMeshAgent);
 
-        stateMachine.AddTransition(chase, attack, () => { return distanceToPlayer < attackDistance; });
-        stateMachine.AddTransition(attack, retreat, () => { return distanceToPlayer < retreatDistance && !attackController.attackInProgress; });
-        stateMachine.AddTransition(attack, chase, () => { return distanceToPlayer > attackDistance && !attackController.attackInProgress; });
-        stateMachine.AddTransition(retreat, chase, () => { return distanceToPlayer > stopRetreatDistance; });
+        stateMachine.AddTransition(chase, attack, () => { return distanceToPlayerSqr < attackDist.DistanceSqr; });
+        stateMachine.AddTransition(attack, retreat, () => { return distanceToPlayerSqr < retreatDist.DistanceSqr && !attackController.attackInProgress; });
+        stateMachine.AddTransition(attack, chase, () => { return distanceToPlayerSqr > attackDist.DistanceSqr && !attackController.attackInProgress; });
+        stateMachine.AddTransition(retreat, chase, () => { return distanceToPlayerSqr > stopRetreatDist.DistanceSqr; });
 
         stateMachine.SetState(chase);
         attackController.target = EntityManager.Instance.GetPlayer().healthController;
@@ -50,8 +50,8 @@ public class BaseEnemy : BaseEntity
 
     public override void UpdateDistanceToPlayer()
     {
-        distanceToPlayer = (transform.position - attackController.target.transform.position).magnitude;
-        EntityManager.Instance.UpdateClosestEnemy(distanceToPlayer, this);
+        distanceToPlayerSqr = (transform.position - attackController.target.transform.position).sqrMagnitude;
+        EntityManager.Instance.UpdateClosestEnemy(distanceToPlayerSqr, this);
     }
 
     protected override void TakeDamage(float damage, Vector3 dir)
@@ -93,7 +93,7 @@ public class BaseEnemy : BaseEntity
         }
         else
         {
-            return distanceToPlayer;
+            return distanceToPlayerSqr;
         }
     }
 
@@ -106,13 +106,13 @@ public class BaseEnemy : BaseEntity
             return;
         }
         UnityEditor.Handles.color = Color.red;
-        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, attackDistance, 1f);
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, attackDist.Distance, 1f);
 
         UnityEditor.Handles.color = Color.blue;
-        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, retreatDistance, 1f);
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, retreatDist.Distance, 1f);
 
         UnityEditor.Handles.color = Color.green;
-        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, stopRetreatDistance, 1f);
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, stopRetreatDist.Distance, 1f);
     }
 #endif
 }

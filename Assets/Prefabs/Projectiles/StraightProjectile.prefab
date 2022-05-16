@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6517101951551077759}
   - component: {fileID: 7199956296831566447}
   - component: {fileID: 1150160592450747251}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StraightProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,5 +129,4 @@ MonoBehaviour:
   speed: 10
   lifetime: 2
   rb: {fileID: 7199956296831566447}
-  col: {fileID: 6517101951551077759}
   damage: 10
