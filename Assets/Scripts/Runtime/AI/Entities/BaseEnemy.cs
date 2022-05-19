@@ -97,6 +97,11 @@ public class BaseEnemy : BaseEntity
         }
     }
 
+    public override (float damage, float health, float speed) GetStats()
+    {
+        return (attackController.DPS, healthController.startingHealth, navMeshAgent.speed);
+    }
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

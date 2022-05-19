@@ -787,6 +787,10 @@
       <Project>{566D529D-9A17-4558-EFCD-9EF33DFB0B8E}</Project>
       <Name>Project.Joystick</Name>
     </ProjectReference>
+    <ProjectReference Include="Project.EntityEditor.csproj">
+      <Project>{D0352AAA-5657-012D-BEB2-D80C0B94FE70}</Project>
+      <Name>Project.EntityEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="Project.Health.csproj">
       <Project>{8937AA5A-640C-09D5-EFA2-E151457909A2}</Project>
       <Name>Project.Health</Name>
@@ -814,10 +818,6 @@
     <ProjectReference Include="Project.PlayerComponents.csproj">
       <Project>{2978C3E0-CA67-F57C-C7D1-4541C594B461}</Project>
       <Name>Project.PlayerComponents</Name>
-    </ProjectReference>
-    <ProjectReference Include="Project.EntityEditor.csproj">
-      <Project>{D0352AAA-5657-012D-BEB2-D80C0B94FE70}</Project>
-      <Name>Project.EntityEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

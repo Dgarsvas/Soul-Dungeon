@@ -55,4 +55,6 @@ public abstract class BaseEntity : MonoBehaviour
     {
         isActive = state;
     }
+
+    public abstract (float damage, float health, float speed) GetStats();
 }

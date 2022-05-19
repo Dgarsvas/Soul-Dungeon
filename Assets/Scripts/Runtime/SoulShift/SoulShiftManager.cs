@@ -15,6 +15,8 @@ public class SoulShiftManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField]
+    private StatsPanel statsPanel;
+    [SerializeField]
     private GameObject deadMenu;
     [SerializeField]
     private GameObject shiftStartControls;
@@ -87,6 +89,8 @@ public class SoulShiftManager : MonoBehaviour
         {
             choiceParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             StopCoroutine(shiftCoroutine);
+            statsPanel.gameObject.SetActive(false);
+
             ActivateShiftControls(false);
             StartCoroutine(SlowDownTime(false));
             joystick.SetActive(true);
@@ -97,6 +101,7 @@ public class SoulShiftManager : MonoBehaviour
         EntityManager.Instance.GetAvailableEntities(out availableEntities, out index);
         chosenEntity = availableEntities[index];
         curPlayerEntity = chosenEntity;
+        statsPanel.gameObject.SetActive(true);
         MoveSelectionRingToEntity(chosenEntity);
         shiftWasStarted = true;
         hasChosen = false;
@@ -110,10 +115,11 @@ public class SoulShiftManager : MonoBehaviour
         yield return SlowDownTime(true);
         ActivateShiftControls(true);
         yield return new WaitUntil(() => { return hasChosen; });
+        statsPanel.gameObject.SetActive(false);
         ActivateShiftControls(false);
         ShiftSoulToChosenEntity();
-        yield return SlowDownTime(false);
         joystick.SetActive(true);
+        yield return SlowDownTime(false);
         shiftWasStarted = false;
         hasChosen = false;
         curPlayerEntity = null;
@@ -181,6 +187,7 @@ public class SoulShiftManager : MonoBehaviour
         choiceRing.SetActive(true);
         choiceParticles.Play(true);
         choiceRing.transform.position = new Vector3(chosenEntity.transform.position.x, FLOOR_Y, chosenEntity.transform.position.z);
+        statsPanel.SetStats(chosenEntity.GetStats());
     }
 
     public void ShiftNext()

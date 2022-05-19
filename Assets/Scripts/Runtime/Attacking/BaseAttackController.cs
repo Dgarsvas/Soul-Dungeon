@@ -27,6 +27,14 @@ public abstract class BaseAttackController : MonoBehaviour
 
     private Coroutine attackCoroutine;
 
+    public float DPS
+    {
+        get
+        {
+            return damage * reloadTime;
+        }
+    }
+
     private void Update()
     {
         if (canAttack)
