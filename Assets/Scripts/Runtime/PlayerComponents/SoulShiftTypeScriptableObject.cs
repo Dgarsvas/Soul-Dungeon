@@ -36,6 +36,12 @@ public abstract class SoulShiftTypeScriptableObject : ScriptableObject
         }
     }
 
+    public float HealthMutiplier => healthMutiplier;
+
+    public float AttackSpeedMultiplier => attackSpeedMultiplier;
+
+    public float MovementSpeedMultiplier => movementSpeedMultiplier;
+
     public abstract float GetSoulShiftProgress();
     public abstract void DoSoulShiftEffect();
 }

@@ -124,7 +124,8 @@ public class SoulShiftManager : MonoBehaviour
         hasChosen = false;
         curPlayerEntity = null;
         choiceParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        
+
+        EntityManager.Instance.FindNewClosestEntityForPlayer();
         CurrentStatistics.SoulShiftUsed();
         UpdateSoulShiftProgress();
     }
@@ -138,9 +139,7 @@ public class SoulShiftManager : MonoBehaviour
     {
         if (curPlayerEntity != chosenEntity)
         {
-            PlayerController player = chosenEntity.gameObject.AddComponent<PlayerController>();
-            player.attackController = chosenEntity.gameObject.GetComponent<BaseAttackController>();
-
+            chosenEntity.gameObject.AddComponent<PlayerController>();
             chosenEntity.isPlayer = true;
             MakePreviousPlayerEnitityIntoEnemy(curPlayerEntity);
         }

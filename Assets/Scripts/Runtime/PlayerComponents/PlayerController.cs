@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public delegate void PlayerControllerChangedEvent(PlayerController player);
     public static event PlayerControllerChangedEvent PlayerControllerChanged;
     public BaseAttackController attackController;
+    public HealthController healthController;
 
 
     private const float TARGET_DISTANCE = 0.6f;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float speedModifier = 2f;
+    private float modifiedSpeedModifier;
 
     private bool joystickIsDown;
     private bool canAttack;
@@ -31,15 +33,19 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(Instance);
         }
-        agent = GetComponent<NavMeshAgent>();
-        speedModifier = agent.speed;
-        agent.updateRotation = false;
-
-        PlayerControllerChanged?.Invoke(this);
         Instance = this;
         Joystick.JoystickDown += JoystickDown;
         Joystick.JoystickUp += JoystickUp;
+
+        agent = GetComponent<NavMeshAgent>();
+        attackController = GetComponent<BaseAttackController>();
+        healthController = GetComponent<HealthController>();
+        speedModifier = agent.speed;
+        modifiedSpeedModifier = speedModifier;
+        agent.updateRotation = false;
+
         EnableAttack(true);
+        PlayerControllerChanged?.Invoke(this);
     }
 
     private void OnDestroy()
@@ -63,6 +69,7 @@ public class PlayerController : MonoBehaviour
         joystickIsDown = true;
         agent.isStopped = false;
         attackController.canAttack = false;
+        attackController.CancelAttack();
     }
 
     private void Update()
@@ -70,7 +77,7 @@ public class PlayerController : MonoBehaviour
         if (joystickIsDown)
         {
             Vector2 dir = offset * Joystick.Instance.Direction;
-            agent.speed = dir.magnitude * speedModifier;
+            agent.speed = dir.magnitude * modifiedSpeedModifier;
             dir = dir.normalized * TARGET_DISTANCE;
             if (dir != Vector2.zero)
             {

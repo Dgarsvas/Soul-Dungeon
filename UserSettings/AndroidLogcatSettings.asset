@@ -3,23 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "R58NC2MGXMT",
         "name": "com.DefaultCompany.souldungeonprototype",
-        "processId": 6777,
+        "processId": 3711,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "R58NC2MGXMT",
-            "name": "com.DefaultCompany.souldungeonprototype",
-            "processId": 32565,
-            "exited": true
-        },
-        {
-            "deviceId": "R58NC2MGXMT",
-            "name": "com.DefaultCompany.souldungeonprototype",
-            "processId": 8059,
-            "exited": true
-        },
         {
             "deviceId": "R58NC2MGXMT",
             "name": "com.DefaultCompany.souldungeonprototype",
@@ -30,24 +18,42 @@
             "deviceId": "R58NC2MGXMT",
             "name": "com.DefaultCompany.souldungeonprototype",
             "processId": 20317,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R58NC2MGXMT",
             "name": "com.DefaultCompany.souldungeonprototype",
             "processId": 23428,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R58NC2MGXMT",
             "name": "com.DefaultCompany.souldungeonprototype",
             "processId": 27460,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R58NC2MGXMT",
             "name": "com.DefaultCompany.souldungeonprototype",
             "processId": 6777,
+            "exited": true
+        },
+        {
+            "deviceId": "R58NC2MGXMT",
+            "name": "com.android.settings",
+            "processId": 1140,
+            "exited": false
+        },
+        {
+            "deviceId": "R58NC2MGXMT",
+            "name": "com.DefaultCompany.souldungeonprototype",
+            "processId": 1118,
+            "exited": false
+        },
+        {
+            "deviceId": "R58NC2MGXMT",
+            "name": "com.DefaultCompany.souldungeonprototype",
+            "processId": 3711,
             "exited": false
         }
     ],

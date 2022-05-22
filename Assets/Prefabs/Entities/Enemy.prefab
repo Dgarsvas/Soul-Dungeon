@@ -254,10 +254,13 @@ MonoBehaviour:
   attackController: {fileID: 2937864066807069481}
   attackDist:
     actualDistance: 5
+    sqrDistance: 25
   retreatDist:
     actualDistance: 3
+    sqrDistance: 9
   stopRetreatDist:
     actualDistance: 6
+    sqrDistance: 36
 --- !u!114 &7342846217290772749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +297,7 @@ MonoBehaviour:
   attackInProgress: 0
   target: {fileID: 0}
   reloadTime: 1.5
-  damage: 15
+  damage: 30
   attackWindupTime: 0.5
   attackWinddownTime: 0.5
   animator: {fileID: 7784061822414110576}

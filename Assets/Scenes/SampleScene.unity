@@ -3808,7 +3808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2937864066807069481, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
       propertyPath: damage
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2937864066807069481, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
       propertyPath: reloadTime
@@ -5524,18 +5524,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2937864066807069480, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
-      propertyPath: attackDist.sqrDistance
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2937864066807069480, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
-      propertyPath: retreatDist.sqrDistance
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2937864066807069480, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
-      propertyPath: stopRetreatDist.sqrDistance
-      value: 36
-      objectReference: {fileID: 0}
     - target: {fileID: 2937864066807069489, guid: 47ca0cb2a90bbf94b9e8666ff5267121, type: 3}
       propertyPath: m_RootOrder
       value: 7

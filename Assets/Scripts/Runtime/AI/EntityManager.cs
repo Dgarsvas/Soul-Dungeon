@@ -113,7 +113,7 @@ public class EntityManager : MonoBehaviour
         }
     }
 
-    private void FindNewClosestEntityForPlayer()
+    public void FindNewClosestEntityForPlayer()
     {
         curClosestDistance = float.MaxValue;
         curClosestEnemy = null;

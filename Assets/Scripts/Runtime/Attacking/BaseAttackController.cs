@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ public abstract class BaseAttackController : MonoBehaviour
     [SerializeField]
     protected float reloadTime;
     [SerializeField]
+    protected float modifiedReloadTime;
+    [SerializeField]
     protected int damage;
     [SerializeField]
     protected float attackWindupTime;
@@ -31,8 +34,13 @@ public abstract class BaseAttackController : MonoBehaviour
     {
         get
         {
-            return damage * reloadTime;
+            return damage / modifiedReloadTime;
         }
+    }
+
+    private void Awake()
+    {
+        modifiedReloadTime = reloadTime;
     }
 
     private void Update()
@@ -43,7 +51,7 @@ public abstract class BaseAttackController : MonoBehaviour
             if (timer < 0)
             {
                 attackCoroutine = StartCoroutine(PerformAttack());
-                timer = reloadTime;
+                timer = modifiedReloadTime;
             }
         }
 
@@ -54,7 +62,10 @@ public abstract class BaseAttackController : MonoBehaviour
 
     public virtual void CancelAttack()
     {
-        StopCoroutine(attackCoroutine);
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+        }
         attackInProgress = false;
     }
 }

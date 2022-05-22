@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextLevelDoor : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class NextLevelDoor : MonoBehaviour
     private void Awake()
     {
         EntityManager.AllEnemiesKilled += ActivatePortal;
+    }
+
+    private void OnDestroy()
+    {
+        EntityManager.AllEnemiesKilled -= ActivatePortal;
     }
 
     private void ActivatePortal()
@@ -29,5 +35,6 @@ public class NextLevelDoor : MonoBehaviour
     private void MoveToNextLevel()
     {
         Debug.Log("Moving to next level");
+        SceneManager.LoadScene(0);
     }
 }
