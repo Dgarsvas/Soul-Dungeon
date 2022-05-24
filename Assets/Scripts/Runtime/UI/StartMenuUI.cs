@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class StartMenuUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void StartGame()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneLoadManager.Instance.LoadScene("Level1");
     }
 }

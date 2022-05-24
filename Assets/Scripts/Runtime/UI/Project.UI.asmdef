@@ -1,7 +1,9 @@
 {
-    "name": "Project.LevelManagement",
+    "name": "Project.UI",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:4ec55e9269c71ca449f4480a9a70970e"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

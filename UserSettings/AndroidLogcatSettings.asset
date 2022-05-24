@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R58NC2MGXMT",
         "name": "com.DefaultCompany.souldungeonprototype",
-        "processId": 3711,
+        "processId": 4370,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -54,6 +54,12 @@
             "deviceId": "R58NC2MGXMT",
             "name": "com.DefaultCompany.souldungeonprototype",
             "processId": 3711,
+            "exited": false
+        },
+        {
+            "deviceId": "R58NC2MGXMT",
+            "name": "com.DefaultCompany.souldungeonprototype",
+            "processId": 4370,
             "exited": false
         }
     ],
