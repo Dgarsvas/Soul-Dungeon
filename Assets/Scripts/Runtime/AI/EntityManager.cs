@@ -98,7 +98,7 @@ public class EntityManager : MonoBehaviour
         }
         else
         {
-            CurrentStatistics.EnemyKilled();
+            GameState.EnemyKilled();
             EntityKilled?.Invoke(entity);
             if (entities.Count == 1 && entities[0].isPlayer)
             {

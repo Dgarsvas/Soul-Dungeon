@@ -11,7 +11,7 @@ public class SoulShiftAfterKillScriptableObject : SoulShiftTypeScriptableObject
 
     public override float GetSoulShiftProgress()
     {
-        return ((float)(CurrentStatistics.AmountOfKills - CurrentStatistics.SoulShiftAmountUsed * amountOfKillsNeeded)) / amountOfKillsNeeded;
+        return ((float)(GameState.AmountOfKills - GameState.SoulShiftAmountUsed * amountOfKillsNeeded)) / amountOfKillsNeeded;
     }
 
     public override void DoSoulShiftEffect()

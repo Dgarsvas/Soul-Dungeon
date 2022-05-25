@@ -3,22 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneLoadManager : MonoBehaviour
 {
-    [SerializeField]
-    private LevelManagerScriptableObject levels;
-
-    private const float FADE_TIME = 0.8f;
-   
-    public delegate void FadeInFinishedEvent();
-    public static event FadeInFinishedEvent OnFadeInFinished;
-
     public static SceneLoadManager Instance
     {
         get;
         private set;
     }
+
+    [SerializeField]
+    private LevelManagerScriptableObject levels;
+    [SerializeField]
+    private Image fade;
+    [SerializeField]
+    private AnimationCurve curve;
+
+    private const float FADE_TIME = 0.8f;
+   
+    public delegate void FadeInFinishedEvent();
+    public static event FadeInFinishedEvent OnFadeInFinished;
 
     private void Awake()
     {
@@ -27,7 +32,7 @@ public class SceneLoadManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        DontDestroyOnLoad(gameObject);
         Instance = this;
     }
 
@@ -47,21 +52,27 @@ public class SceneLoadManager : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
-        float timer = FADE_TIME;
-        while (timer > 0)
+        float timer = 0;
+        while (timer < FADE_TIME)
         {
             yield return null;
-            timer -= Time.deltaTime;
+            timer += Time.deltaTime;
+            fade.color = Color.Lerp(Color.clear, Color.black, curve.Evaluate(timer / FADE_TIME));
         }
+
+        fade.color = Color.black;
     }
 
     private IEnumerator FadeIn()
     {
-        float timer = FADE_TIME;
-        while (timer > 0)
+        float timer = 0;
+        while (timer < FADE_TIME)
         {
             yield return null;
-            timer -= Time.deltaTime;
+            timer += Time.deltaTime;
+            fade.color = Color.Lerp(Color.black, Color.clear, curve.Evaluate(timer / FADE_TIME));
         }
+
+        fade.color = Color.clear;
     }
 }

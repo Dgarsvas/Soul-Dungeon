@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class PickSoulPowerUI : MonoBehaviour
 {
+    public UnityEvent<int> OnSoulSelect;
+
     [Header("References")]
     [SerializeField]
     private SoulShiftVariantManagerScriptableObject variants;
@@ -31,7 +33,7 @@ public class PickSoulPowerUI : MonoBehaviour
     private float itemSize = 35f;
 
     private int selectedIndex;
-    public UnityEvent<int> OnSoulSelect;
+    private Coroutine snappingCoroutine;
 
     private void Awake()
     {
@@ -49,21 +51,34 @@ public class PickSoulPowerUI : MonoBehaviour
 
     public void SnapToClosest()
     {
-        Debug.Log("Snapping");
         scroll.StopMovement();
-        StartCoroutine(SnapToClosestObjectCoroutine());
+        if (snappingCoroutine != null)
+        {
+            StopCoroutine(snappingCoroutine);
+        }
+        StartCoroutine(SnapToPosCoroutine(GetClosestPosToSnap(), snapSpeed));
     }
 
-    private IEnumerator SnapToClosestObjectCoroutine()
+    public void SnapToIndex(int index)
     {
-        float posToSnap = GetClosestPosToSnap();
+        scroll.StopMovement();
+        if (snappingCoroutine != null)
+        {
+            StopCoroutine(snappingCoroutine);
+        }
+        selectedIndex = index;
+        StartCoroutine(SnapToPosCoroutine(GetPosOfIndex(index), 1f));
+    }
+
+    private IEnumerator SnapToPosCoroutine(float posToSnap, float speed)
+    {
         float originalPos = content.anchoredPosition.x;
 
         float time = 1f;
         float timer = 0f;
         while (timer < time)
         {
-            timer += Time.deltaTime * snapSpeed;
+            timer += Time.deltaTime * speed;
             content.anchoredPosition = new Vector2(Mathf.Lerp(originalPos, posToSnap, curve.Evaluate(timer / time)), 0f);
             yield return null;
         }
@@ -71,6 +86,11 @@ public class PickSoulPowerUI : MonoBehaviour
         content.anchoredPosition = new Vector2(posToSnap, 0f);
         OnSoulSelect?.Invoke(selectedIndex);
         description.text = variants[selectedIndex].description;
+    }
+
+    private float GetPosOfIndex(int index)
+    {
+        return -index * itemSize;
     }
 
     private float GetClosestPosToSnap()

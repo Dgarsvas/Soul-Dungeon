@@ -832,13 +832,13 @@
       <Project>{17CFB336-2499-2646-0E6C-3AFECA957609}</Project>
       <Name>Project.Attack</Name>
     </ProjectReference>
-    <ProjectReference Include="Project.StatsTracking.csproj">
-      <Project>{EFD3F7A8-3F34-98D4-453D-3137793C30F2}</Project>
-      <Name>Project.StatsTracking</Name>
-    </ProjectReference>
     <ProjectReference Include="Project.PlayerComponents.csproj">
       <Project>{2978C3E0-CA67-F57C-C7D1-4541C594B461}</Project>
       <Name>Project.PlayerComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="Project.GameState.csproj">
+      <Project>{FE961D0D-A27F-FBDF-29C1-7F22A4A7E0E2}</Project>
+      <Name>Project.GameState</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

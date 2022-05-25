@@ -126,7 +126,7 @@ public class SoulShiftManager : MonoBehaviour
         choiceParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
         EntityManager.Instance.FindNewClosestEntityForPlayer();
-        CurrentStatistics.SoulShiftUsed();
+        GameState.SoulShiftUsed();
         UpdateSoulShiftProgress();
     }
 

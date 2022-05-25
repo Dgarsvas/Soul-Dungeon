@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class CurrentStatistics
+public static class GameState
 {
     private static int amountOfKills;
     private static int soulShiftAmountUsed;
