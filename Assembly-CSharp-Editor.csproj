@@ -714,9 +714,6 @@
     <Reference Include="Unity.2D.Path.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Psdimporter.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.ProBuilder.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
     </Reference>
@@ -729,8 +726,8 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
+    <Reference Include="Unity.2D.Psdimporter.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
@@ -740,6 +737,9 @@
     </Reference>
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
@@ -812,6 +812,10 @@
       <Project>{8937AA5A-640C-09D5-EFA2-E151457909A2}</Project>
       <Name>Project.Health</Name>
     </ProjectReference>
+    <ProjectReference Include="Project.UI.csproj">
+      <Project>{0EC5EBBB-D8D5-80D0-CA98-029C047BB373}</Project>
+      <Name>Project.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="Project.Particles.csproj">
       <Project>{98482DEA-FA61-3020-E49A-A8C4AA4B4638}</Project>
       <Name>Project.Particles</Name>
@@ -835,10 +839,6 @@
     <ProjectReference Include="Project.PlayerComponents.csproj">
       <Project>{2978C3E0-CA67-F57C-C7D1-4541C594B461}</Project>
       <Name>Project.PlayerComponents</Name>
-    </ProjectReference>
-    <ProjectReference Include="Project.UI.csproj">
-      <Project>{0EC5EBBB-D8D5-80D0-CA98-029C047BB373}</Project>
-      <Name>Project.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

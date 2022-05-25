@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,9 +10,15 @@ public class PickSoulPowerUI : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
+    private SoulShiftVariantManagerScriptableObject variants;
+    [SerializeField]
     private ScrollRect scroll;
     [SerializeField]
+    private GameObject prefab;
+    [SerializeField]
     private RectTransform content;
+    [SerializeField]
+    private TextMeshProUGUI description;
 
     [Header("Snap Settings")]
     [SerializeField]
@@ -24,6 +32,20 @@ public class PickSoulPowerUI : MonoBehaviour
 
     private int selectedIndex;
     public UnityEvent<int> OnSoulSelect;
+
+    private void Awake()
+    {
+        Populate();
+        SnapToClosest();
+    }
+
+    private void Populate()
+    {
+        for (int i = 0; i < variants.Count; i++)
+        {
+            Instantiate(prefab, content).GetComponent<SoulShiftVariantDisplayUI>().PopulateFields(variants[i]);
+        }
+    }
 
     public void SnapToClosest()
     {
@@ -48,6 +70,7 @@ public class PickSoulPowerUI : MonoBehaviour
 
         content.anchoredPosition = new Vector2(posToSnap, 0f);
         OnSoulSelect?.Invoke(selectedIndex);
+        description.text = variants[selectedIndex].description;
     }
 
     private float GetClosestPosToSnap()

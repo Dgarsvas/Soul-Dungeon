@@ -15,14 +15,14 @@ public class LevelManagerScriptableObjectEditor : Editor
         if (GUILayout.Button("Generate List Of Levels"))
         {
             LevelManagerScriptableObject obj = (LevelManagerScriptableObject)target;
-            int counter = 0; 
+            obj.levels.Clear();
             foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
             {
                 if (scene.enabled)
                 {
                     string name = scene.path.Substring(scene.path.LastIndexOf('/') + 1);
                     name = name.Substring(0, name.Length - 6);
-                    obj.levels.Add(new Level(counter++, name));
+                    obj.levels.Add(name);
                 }
             }
         }

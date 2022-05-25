@@ -14,15 +14,18 @@ public abstract class SoulShiftTypeScriptableObject : ScriptableObject
 {
     [Header("Base properties")]
     [SerializeField]
-    private float healthMutiplier = 1f;
+    private float healthMultiplier = 1f;
     [SerializeField]
-    private float attackSpeedMultiplier = 1f;
+    private float reloadRateMultiplier = 1f;
     [SerializeField]
-    private float movementSpeedMultiplier = 1f;
+    private float damageMultiplier = 1f;
+    [SerializeField]
+    private float speedMultiplier = 1f;
     [SerializeField]
     private SoulShiftActivationType type;
 
     [Header("Display")]
+    public string title;
     public Sprite icon;
     [Multiline]
     public string description;
@@ -36,11 +39,14 @@ public abstract class SoulShiftTypeScriptableObject : ScriptableObject
         }
     }
 
-    public float HealthMutiplier => healthMutiplier;
+    public float HealthMutiplier => healthMultiplier;
 
-    public float AttackSpeedMultiplier => attackSpeedMultiplier;
+    public float ReloadRateMultiplier => reloadRateMultiplier;
 
-    public float MovementSpeedMultiplier => movementSpeedMultiplier;
+    public float SpeedMultiplier => speedMultiplier;
+
+    public float DamageMutiplier => damageMultiplier;
+
 
     public abstract float GetSoulShiftProgress();
     public abstract void DoSoulShiftEffect();
