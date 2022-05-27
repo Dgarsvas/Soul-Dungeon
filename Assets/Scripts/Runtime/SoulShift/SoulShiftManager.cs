@@ -55,6 +55,7 @@ public class SoulShiftManager : MonoBehaviour
 
     private void Awake()
     {
+        currentSoulShiftUsed = GameState.GetData(GameState.CHOSEN_SOUL_VARIANT_KEY, currentSoulShiftUsed) as SoulShiftTypeScriptableObject;
         EntityManager.PlayerDied += PlayerDied;
         if (Time.timeScale == 0)
         {

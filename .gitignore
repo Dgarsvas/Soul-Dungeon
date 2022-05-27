@@ -65,3 +65,4 @@ ehthumbs.db
 UserSettings/EditorUserSettings.asset
 Logs/ApiUpdaterCheck.txt
 UserSettings/EditorUserSettings.asset
+*.csproj

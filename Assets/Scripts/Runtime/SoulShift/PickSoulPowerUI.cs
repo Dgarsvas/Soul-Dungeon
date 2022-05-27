@@ -85,6 +85,7 @@ public class PickSoulPowerUI : MonoBehaviour
 
         content.anchoredPosition = new Vector2(posToSnap, 0f);
         OnSoulSelect?.Invoke(selectedIndex);
+        GameState.SetData(variants[selectedIndex], GameState.CHOSEN_SOUL_VARIANT_KEY);
         description.text = variants[selectedIndex].description;
     }
 
