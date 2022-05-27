@@ -6,11 +6,15 @@ using UnityEngine;
 public static class GameState
 {
     private static int amountOfKills;
+    private static float damageDealt;
     private static int soulShiftAmountUsed;
 
     private static Dictionary<string, object> dataDictionary;
 
     public const string CHOSEN_SOUL_VARIANT_KEY = "Soul_Picked";
+
+    public delegate void DamageDealtEvent(float damageDealt);
+    public static event DamageDealtEvent OnDamageDealt;
 
     public static int AmountOfKills
     {
@@ -28,11 +32,20 @@ public static class GameState
         }
     }
 
+    public static float DamageDealt
+    {
+        get
+        {
+            return damageDealt;
+        }
+    }
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
     public static void ResetStatistics()
     {
         amountOfKills = 0;
         soulShiftAmountUsed = 0;
+        damageDealt = 0f;
         dataDictionary = new Dictionary<string, object>();
     }
 
@@ -70,6 +83,14 @@ public static class GameState
     {
         amountOfKills++;
     }
+
+    public static void DealDamage(float curDamageDealt)
+    {
+        damageDealt += Mathf.Max(0f, curDamageDealt);
+        Debug.Log($"Total damage {damageDealt}");
+        OnDamageDealt?.Invoke(Mathf.Max(0f, curDamageDealt));
+    }
+
 
     public static void SoulShiftUsed()
     {

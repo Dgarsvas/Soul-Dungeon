@@ -13,7 +13,7 @@ public class HealthBar : MonoBehaviour
     public void Initialize(HealthController health)
     {
         healthRef = health;
-        slider.maxValue = healthRef.startingHealth;
+        slider.maxValue = healthRef.currentMaxHealth;
         slider.value = healthRef.Health;
         healthRef.OnDamageTaken.AddListener(DamageTaken);
     }

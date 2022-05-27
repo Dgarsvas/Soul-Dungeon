@@ -9,16 +9,17 @@ public class StraightProjectile : BaseProjectile
     [SerializeField]
     private Rigidbody rb;
     [SerializeField]
-    private int damage;
+    private float damage;
 
     private void OnValidate()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public override void Init(Vector3 targetPos, float speed, float lifetime, int damage)
+    public override void Init(Vector3 targetPos, float speed, float lifetime, float damage, bool isPlayer)
     {
         this.damage = damage;
+        isPlayerProjectile = isPlayer;
         this.lifetime = lifetime;
         rb.AddForce(-(targetPos - transform.position).normalized * speed, ForceMode.VelocityChange);
     }
@@ -30,6 +31,10 @@ public class StraightProjectile : BaseProjectile
 
         if (collision.gameObject.CompareTag("Entity"))
         {
+            if (isPlayerProjectile)
+            {
+                GameState.DealDamage(damage);
+            }
             collision.gameObject.GetComponent<HealthController>().TakeDamage(damage, -point.normal);
         }
         

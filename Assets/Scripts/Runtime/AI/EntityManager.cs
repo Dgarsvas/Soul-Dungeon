@@ -13,7 +13,7 @@ public class EntityManager : MonoBehaviour
     public static event OnPlayerChangedEvent PlayerChanged;
 
     public delegate void OnEntityKilledEvent(BaseEntity entity);
-    public static event OnEntityKilledEvent EntityKilled;
+    public static event OnEntityKilledEvent OnEntityKilled;
 
     public delegate void OnAllEnemiesKilled();
     public static event OnAllEnemiesKilled AllEnemiesKilled;
@@ -40,14 +40,14 @@ public class EntityManager : MonoBehaviour
         {
             PlayerControllerChanged(PlayerController.Instance);
         }
-        PlayerController.PlayerControllerChanged += PlayerControllerChanged;
+        PlayerController.OnPlayerControllerChanged += PlayerControllerChanged;
 
         entities = new List<BaseEntity>();
     }
 
     private void OnDestroy()
     {
-        PlayerController.PlayerControllerChanged -= PlayerControllerChanged;
+        PlayerController.OnPlayerControllerChanged -= PlayerControllerChanged;
     }
 
     public void UpdateClosestEnemy(float distance, BaseEntity enemy)
@@ -99,7 +99,7 @@ public class EntityManager : MonoBehaviour
         else
         {
             GameState.EnemyKilled();
-            EntityKilled?.Invoke(entity);
+            OnEntityKilled?.Invoke(entity);
             if (entities.Count == 1 && entities[0].isPlayer)
             {
                 AllEnemiesKilled?.Invoke();

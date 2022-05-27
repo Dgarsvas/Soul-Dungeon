@@ -5630,6 +5630,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5499076560940526165, guid: 411b65deb13ee784e9a455f78ed928e6, type: 3}
+      propertyPath: curSoul
+      value: 
+      objectReference: {fileID: 11400000, guid: fcefea9c734a0a94fb1dc14554e481be, type: 2}
+    - target: {fileID: 5499076560940526165, guid: 411b65deb13ee784e9a455f78ed928e6, type: 3}
       propertyPath: deadMenu
       value: 
       objectReference: {fileID: 129247470}
@@ -5674,6 +5678,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4719896266886378243, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
+      propertyPath: defaultHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7278509053605809905, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
       propertyPath: attackDist.sqrDistance
       value: 16
@@ -5737,6 +5745,14 @@ PrefabInstance:
     - target: {fileID: 7278509053718587236, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893893774005009571, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
+      propertyPath: defaultDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893893774005009571, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
+      propertyPath: defaultReloadTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2703c9c9664f3f144a463c7f858e9015, type: 3}
@@ -5844,18 +5860,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2433340765884014826, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
-      propertyPath: attackDist.sqrDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2433340765884014826, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
-      propertyPath: retreatDist.sqrDistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2433340765884014826, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
-      propertyPath: stopRetreatDist.sqrDistance
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2433340765884014835, guid: aab5bd328655aac48a9a2b58ffc6e514, type: 3}
       propertyPath: m_RootOrder
       value: 10

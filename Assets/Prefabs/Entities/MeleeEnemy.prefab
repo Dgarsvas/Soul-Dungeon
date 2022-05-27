@@ -168,14 +168,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 2433340765884014833}
   healthController: {fileID: 7847121020870388431}
+  defaultSpeed: 0
   isPlayer: 0
   attackController: {fileID: 2433340765884014827}
   attackDist:
     actualDistance: 2
+    sqrDistance: 4
   retreatDist:
     actualDistance: 0
+    sqrDistance: 0
   stopRetreatDist:
     actualDistance: 0
+    sqrDistance: 0
 --- !u!114 &7847121020870388431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 60
-  startingHealth: 60
+  defaultHealth: 60
+  currentMaxHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -211,8 +216,10 @@ MonoBehaviour:
   canAttack: 0
   attackInProgress: 0
   target: {fileID: 0}
-  reloadTime: 1.5
-  damage: 20
+  defaultReloadTime: 1.5
+  modifiedReloadTime: 0
+  defaultDamage: 30
+  modifiedDamage: 0
   attackWindupTime: 0.9
   attackWinddownTime: 0.5
   animator: {fileID: 4937932924952657472}

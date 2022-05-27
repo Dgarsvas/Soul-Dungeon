@@ -8,6 +8,8 @@ public abstract class BaseProjectile : MonoBehaviour
     protected float speed;
     [SerializeField]
     protected float lifetime;
+    [SerializeField]
+    protected bool isPlayerProjectile;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public abstract class BaseProjectile : MonoBehaviour
         Destroy(obj);
     }
 
-    public abstract void Init(Vector3 targetPos, float speed, float lifetime, int damage);
+    public abstract void Init(Vector3 targetPos, float speed, float lifetime, float damage, bool isPlayer);
 
     private void OnCollisionEnter(Collision collision)
     {

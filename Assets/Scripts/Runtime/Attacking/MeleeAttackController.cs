@@ -19,7 +19,11 @@ public class MeleeAttackController : BaseAttackController
         Vector3 dir = target.transform.position - transform.position;
         if (dir.magnitude < attackRange)
         {
-            target.TakeDamage(damage, -dir.normalized);
+            if (isPlayer)
+            {
+                GameState.DealDamage(modifiedDamage);
+            }
+            target.TakeDamage(modifiedDamage, -dir.normalized);
         }
         yield return new WaitForSeconds(attackWinddownTime);
 

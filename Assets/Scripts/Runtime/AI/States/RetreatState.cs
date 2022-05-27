@@ -21,7 +21,7 @@ public class RetreatState : IState
     public void OnEnter()
     {
         target = PlayerController.Instance.transform;
-        PlayerController.PlayerControllerChanged += PlayerController_PlayerControllerChanged;
+        PlayerController.OnPlayerControllerChanged += PlayerController_PlayerControllerChanged;
         agent.isStopped = false;
         agent.SetDestination(GetRetreatPos());
     }
@@ -33,7 +33,7 @@ public class RetreatState : IState
 
     public void OnExit()
     {
-        PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
+        PlayerController.OnPlayerControllerChanged -= PlayerController_PlayerControllerChanged;
         agent.isStopped = true;
     }
 
@@ -44,7 +44,7 @@ public class RetreatState : IState
 
     public void SafeDestroy()
     {
-        PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
+        PlayerController.OnPlayerControllerChanged -= PlayerController_PlayerControllerChanged;
     }
 }
 

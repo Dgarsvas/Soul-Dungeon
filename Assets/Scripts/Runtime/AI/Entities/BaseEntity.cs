@@ -15,8 +15,11 @@ public abstract class BaseEntity : MonoBehaviour
     protected StateMachine stateMachine;
     [SerializeField]
     public HealthController healthController;
+    [SerializeField]
+    protected float defaultSpeed;
 
-    //[HideInInspector]
+
+    [HideInInspector]
     public bool isPlayer;
 
     protected float distanceToPlayerSqr = float.MaxValue;
@@ -48,6 +51,8 @@ public abstract class BaseEntity : MonoBehaviour
     protected abstract void TargetChanged(BaseEntity target);
 
     protected abstract void Despawn();
+
+    public abstract void ApplyModifiers(float health = 1f, float reloadRate = 1f, float damage = 1f, float speed = 1f);
 
     public abstract float GetDistanceToPlayer();
 

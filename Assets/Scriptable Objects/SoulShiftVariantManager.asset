@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soulshifts:
   - {fileID: 11400000, guid: fcefea9c734a0a94fb1dc14554e481be, type: 2}
+  - {fileID: 11400000, guid: 4de05a4eb2aafa8439c60518cb0c1907, type: 2}
   - {fileID: 11400000, guid: db2066a70c28f5642a83ef389ac70801, type: 2}
-  - {fileID: 11400000, guid: 848c1e19423619241baf42c6b26049d9, type: 2}

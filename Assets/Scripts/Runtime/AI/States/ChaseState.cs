@@ -19,14 +19,14 @@ public class ChaseState : IState
     public void OnEnter()
     {
         target = PlayerController.Instance.transform;
-        PlayerController.PlayerControllerChanged += PlayerController_PlayerControllerChanged;
+        PlayerController.OnPlayerControllerChanged += PlayerController_PlayerControllerChanged;
         agent.isStopped = false;
         agent.SetDestination(target.position);
     }
 
     public void OnExit()
     {
-        PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
+        PlayerController.OnPlayerControllerChanged -= PlayerController_PlayerControllerChanged;
         agent.isStopped = true;
     }
 
@@ -37,6 +37,6 @@ public class ChaseState : IState
 
     public void SafeDestroy()
     {
-        PlayerController.PlayerControllerChanged -= PlayerController_PlayerControllerChanged;
+        PlayerController.OnPlayerControllerChanged -= PlayerController_PlayerControllerChanged;
     }
 }

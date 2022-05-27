@@ -39,7 +39,7 @@ public class SoulShiftManager : MonoBehaviour
 
     [Header("Soulshift properties")]
     [SerializeField]
-    SoulShiftTypeScriptableObject currentSoulShiftUsed;
+    SoulShiftTypeScriptableObject curSoul;
 
     private const float FLOOR_Y = -0.5f;
 
@@ -55,33 +55,37 @@ public class SoulShiftManager : MonoBehaviour
 
     private void Awake()
     {
-        currentSoulShiftUsed = GameState.GetData(GameState.CHOSEN_SOUL_VARIANT_KEY, currentSoulShiftUsed) as SoulShiftTypeScriptableObject;
+        curSoul = GameState.GetData(GameState.CHOSEN_SOUL_VARIANT_KEY, curSoul) as SoulShiftTypeScriptableObject;
         EntityManager.PlayerDied += PlayerDied;
         if (Time.timeScale == 0)
         {
             StartCoroutine(SlowDownTime(false));
         }
 
-        switch (currentSoulShiftUsed.Type)
+        switch (curSoul.Type)
         {
             case SoulShiftActivationType.Kills:
-                EntityManager.EntityKilled += EntityGotKilled;
+                EntityManager.OnEntityKilled += EntityGotKilled;
                 break;
             case SoulShiftActivationType.LevelsPassed:
                 break;
             case SoulShiftActivationType.DamageDealt:
+                GameState.OnDamageDealt += DamageDealt;
                 break;
             case SoulShiftActivationType.Time:
                 break;
         }
 
-        AllowSoulShift(currentSoulShiftUsed.GetSoulShiftProgress() >= 1);
+        AllowSoulShift(curSoul.GetSoulShiftProgress() >= 1);
     }
+
+
 
     private void OnDestroy()
     {
         EntityManager.PlayerDied -= PlayerDied;
-        EntityManager.EntityKilled -= EntityGotKilled;
+        EntityManager.OnEntityKilled -= EntityGotKilled;
+        GameState.OnDamageDealt -= DamageDealt;
     }
 
     public void StartSoulShift()
@@ -140,6 +144,7 @@ public class SoulShiftManager : MonoBehaviour
     {
         if (curPlayerEntity != chosenEntity)
         {
+            chosenEntity.ApplyModifiers(curSoul.HealthMutiplier, curSoul.ReloadRateMultiplier, curSoul.DamageMutiplier, curSoul.SpeedMultiplier);
             chosenEntity.gameObject.AddComponent<PlayerController>();
             chosenEntity.isPlayer = true;
             MakePreviousPlayerEnitityIntoEnemy(curPlayerEntity);
@@ -152,6 +157,8 @@ public class SoulShiftManager : MonoBehaviour
         Destroy(curPlayerEntity.gameObject.GetComponent<PlayerController>());
 
         curPlayerEntity.isPlayer = false;
+        curPlayerEntity.GetComponent<BaseAttackController>().isPlayer = false;
+        curPlayerEntity.ApplyModifiers();
     }
 
     private void ActivateShiftControls(bool state)
@@ -235,9 +242,14 @@ public class SoulShiftManager : MonoBehaviour
         UpdateSoulShiftProgress();
     }
 
+    private void DamageDealt(float damageDealt)
+    {
+        UpdateSoulShiftProgress();
+    }
+
     private void UpdateSoulShiftProgress()
     {
-        float progress = currentSoulShiftUsed.GetSoulShiftProgress();
+        float progress = curSoul.GetSoulShiftProgress();
         progressFill.fillAmount = progress;
         AllowSoulShift(progress >= 1f);
     }

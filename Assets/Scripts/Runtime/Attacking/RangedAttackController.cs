@@ -21,7 +21,7 @@ public class RangedAttackController : BaseAttackController
         animator.ResetTrigger("Shoot");
 
         GameObject spawned = Instantiate(projectilePrefab, transform.position + transform.forward, Quaternion.identity);
-        spawned.GetComponent<BaseProjectile>().Init(transform.position, projectileSpeed, projectileLifetime, damage);
+        spawned.GetComponent<BaseProjectile>().Init(transform.position, projectileSpeed, projectileLifetime, modifiedDamage, isPlayer);
         yield return new WaitForSeconds(attackWinddownTime);
        
         attackInProgress = false;

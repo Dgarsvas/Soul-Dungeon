@@ -16,11 +16,13 @@ public abstract class BaseAttackController : MonoBehaviour
 
     [Header("General Properties")]
     [SerializeField]
-    protected float reloadTime;
+    protected float defaultReloadTime;
     [SerializeField]
     protected float modifiedReloadTime;
     [SerializeField]
-    protected int damage;
+    protected float defaultDamage;
+    [SerializeField]
+    protected float modifiedDamage;
     [SerializeField]
     protected float attackWindupTime;
     [SerializeField]
@@ -30,17 +32,25 @@ public abstract class BaseAttackController : MonoBehaviour
 
     private Coroutine attackCoroutine;
 
+    public bool isPlayer;
+
     public float DPS
     {
         get
         {
-            return damage / modifiedReloadTime;
+            return defaultDamage / defaultReloadTime;
         }
     }
 
     private void Awake()
     {
-        modifiedReloadTime = reloadTime;
+        ModifyDamageAndReload();
+    }
+
+    public void ModifyDamageAndReload(float damage = 1f, float reload = 1f)
+    {
+        modifiedDamage = defaultDamage * damage;
+        modifiedReloadTime = defaultReloadTime / reload;
     }
 
     private void Update()

@@ -97,9 +97,18 @@ public class BaseEnemy : BaseEntity
         }
     }
 
+    public override void ApplyModifiers(float health = 1f, float reloadRate = 1f, float damage = 1f, float speed = 1f)
+    {
+        speed = defaultSpeed * speed;
+        navMeshAgent.speed = speed;
+
+        attackController.ModifyDamageAndReload(damage, reloadRate);
+        healthController.ModifyHealth(health);
+    }
+
     public override (float damage, float health, float speed) GetStats()
     {
-        return (attackController.DPS, healthController.startingHealth, navMeshAgent.speed);
+        return (attackController.DPS, healthController.defaultHealth, navMeshAgent.speed);
     }
 
 

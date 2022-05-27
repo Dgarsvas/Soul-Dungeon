@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e95d1fd7af3614cbe87628fd0ed33e, type: 3}
-  m_Name: test2
+  m_Script: {fileID: 11500000, guid: f159feb37c347074d962ee5c66ffbbaa, type: 3}
+  m_Name: SoulShiftAfterDamage
   m_EditorClassIdentifier: 
-  healthMultiplier: 0.5
+  healthMultiplier: 0.3
   reloadRateMultiplier: 1.5
-  damageMultiplier: 1.5
+  damageMultiplier: 1
   speedMultiplier: 1.5
   type: 2
-  title: Rageful Soul
+  title: Raging Soul
   icon: {fileID: 21300000, guid: 146ba2d585a86ee4eb2e4ac0214fa31c, type: 3}
-  description: You gain power when you hurt others
-  amountOfKillsNeeded: 0
+  description: Soul empowered by the suffering of others
+  damageNeeded: 50

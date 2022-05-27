@@ -10,7 +10,10 @@ public class HealthController : MonoBehaviour
     private float health;
 
     [SerializeField]
-    public float startingHealth;
+    public float defaultHealth;
+
+    [SerializeField]
+    public float currentMaxHealth;
 
     public float Health
     {
@@ -27,7 +30,8 @@ public class HealthController : MonoBehaviour
 
     private void Start()
     {
-        health = startingHealth;
+        health = defaultHealth;
+        currentMaxHealth = defaultHealth;
         HealthBarController.Instance?.TrackHealth(this);
     }
 
@@ -36,7 +40,7 @@ public class HealthController : MonoBehaviour
         HealthBarController.Instance?.StopTrackingHealth(this);
     }
 
-    public virtual void TakeDamage(int damage, Vector3 dir)
+    public virtual void TakeDamage(float damage, Vector3 dir)
     {
         health -= damage;
         OnDamageTaken?.Invoke(damage, dir);
@@ -44,5 +48,12 @@ public class HealthController : MonoBehaviour
         {
             OnDeath?.Invoke();
         }
+    }
+
+    public void ModifyHealth(float healthModifier)
+    {
+        health = defaultHealth * health / currentMaxHealth * healthModifier;
+        currentMaxHealth = defaultHealth * healthModifier;
+        TakeDamage(0, Vector3.zero);
     }
 }

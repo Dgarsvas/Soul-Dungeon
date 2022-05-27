@@ -9,9 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
     public delegate void PlayerControllerChangedEvent(PlayerController player);
-    public static event PlayerControllerChangedEvent PlayerControllerChanged;
+    public static event PlayerControllerChangedEvent OnPlayerControllerChanged;
     public BaseAttackController attackController;
-    public HealthController healthController;
 
 
     private const float TARGET_DISTANCE = 0.6f;
@@ -20,9 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private NavMeshAgent agent;
 
-    [SerializeField]
-    private float speedModifier = 2f;
-    private float modifiedSpeedModifier;
+    private float maxSpeed;
 
     private bool joystickIsDown;
     private bool canAttack;
@@ -36,16 +33,14 @@ public class PlayerController : MonoBehaviour
         Instance = this;
         Joystick.JoystickDown += JoystickDown;
         Joystick.JoystickUp += JoystickUp;
-
         agent = GetComponent<NavMeshAgent>();
+        maxSpeed = agent.speed;
         attackController = GetComponent<BaseAttackController>();
-        healthController = GetComponent<HealthController>();
-        speedModifier = agent.speed;
-        modifiedSpeedModifier = speedModifier;
+        attackController.isPlayer = true;
         agent.updateRotation = false;
 
         EnableAttack(true);
-        PlayerControllerChanged?.Invoke(this);
+        OnPlayerControllerChanged?.Invoke(this);
     }
 
     private void OnDestroy()
@@ -77,7 +72,7 @@ public class PlayerController : MonoBehaviour
         if (joystickIsDown)
         {
             Vector2 dir = offset * Joystick.Instance.Direction;
-            agent.speed = dir.magnitude * modifiedSpeedModifier;
+            agent.speed = dir.magnitude * maxSpeed;
             dir = dir.normalized * TARGET_DISTANCE;
             if (dir != Vector2.zero)
             {
