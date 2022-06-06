@@ -16,7 +16,6 @@ public class SoulShiftAfterDamageScriptableObject : SoulShiftTypeScriptableObjec
 
     public override float GetSoulShiftProgress()
     {
-        Debug.Log($"damage needed {(GameState.DamageDealt - GameState.SoulShiftAmountUsed * damageNeeded)} / {damageNeeded}");
         return ((float)(GameState.DamageDealt - GameState.SoulShiftAmountUsed * damageNeeded)) / damageNeeded;
     }
 }

@@ -57,7 +57,10 @@ public abstract class BaseAttackController : MonoBehaviour
     {
         if (canAttack)
         {
-            transform.LookAt(target.transform);
+            if (!attackInProgress)
+            {
+                transform.LookAt(target.transform);
+            }
             if (timer < 0)
             {
                 attackCoroutine = StartCoroutine(PerformAttack());

@@ -7,7 +7,8 @@ public enum SoulShiftActivationType
     Kills,
     LevelsPassed,
     DamageDealt,
-    Time
+    Time,
+    Absolute
 }
 
 public abstract class SoulShiftTypeScriptableObject : ScriptableObject

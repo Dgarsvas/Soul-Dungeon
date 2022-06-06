@@ -185,6 +185,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  statsPanel: {fileID: 0}
   deadMenu: {fileID: 0}
   shiftStartControls: {fileID: 0}
   vignette: {fileID: 0}
@@ -195,7 +196,7 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   choiceRing: {fileID: 5499076561297290564}
   choiceParticles: {fileID: 5499076561051119804}
-  currentSoulShiftUsed: {fileID: 11400000, guid: fcefea9c734a0a94fb1dc14554e481be, type: 2}
+  curSoul: {fileID: 11400000, guid: fcefea9c734a0a94fb1dc14554e481be, type: 2}
 --- !u!114 &5499076560940526162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +230,7 @@ MonoBehaviour:
   - {fileID: 1965343156803978, guid: aa8d6482d70a23445b4b2a928ed1b845, type: 3}
   - {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
   - {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  - {fileID: 6662880965717719302, guid: 79173a903c33f5b4d87ddebad5df2c78, type: 3}
 --- !u!1 &5499076561297290564
 GameObject:
   m_ObjectHideFlags: 0

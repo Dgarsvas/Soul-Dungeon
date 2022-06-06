@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttackController : BaseAttackController
+public class AreaMeleeAttackController : BaseAttackController
 {
     [Header("Melee properties")]
     [SerializeField]

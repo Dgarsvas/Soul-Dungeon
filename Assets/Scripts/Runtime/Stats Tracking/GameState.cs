@@ -8,6 +8,7 @@ public static class GameState
     private static int amountOfKills;
     private static float damageDealt;
     private static int soulShiftAmountUsed;
+    private static int levelsPassed;
 
     private static Dictionary<string, object> dataDictionary;
 
@@ -37,6 +38,14 @@ public static class GameState
         get
         {
             return damageDealt;
+        }
+    }
+
+    public static float LevelsPassed
+    {
+        get
+        {
+            return levelsPassed;
         }
     }
 
@@ -87,7 +96,6 @@ public static class GameState
     public static void DealDamage(float curDamageDealt)
     {
         damageDealt += Mathf.Max(0f, curDamageDealt);
-        Debug.Log($"Total damage {damageDealt}");
         OnDamageDealt?.Invoke(Mathf.Max(0f, curDamageDealt));
     }
 
@@ -95,5 +103,10 @@ public static class GameState
     public static void SoulShiftUsed()
     {
         soulShiftAmountUsed++;
+    }
+
+    public static void LevelPassed()
+    {
+        levelsPassed++;
     }
 }

@@ -42,6 +42,7 @@ public class HealthController : MonoBehaviour
 
     public virtual void TakeDamage(float damage, Vector3 dir)
     {
+        Debug.Log($"{transform.name} taken damage:{damage}");
         health -= damage;
         OnDamageTaken?.Invoke(damage, dir);
         if (health <= 0)
